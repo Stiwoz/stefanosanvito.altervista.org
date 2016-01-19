@@ -8,60 +8,41 @@ html {
     background-size: cover;
 }
 body{
-    top: 60px;
-    bottom: 60px;
+    background-color: transparent;
 }
 a {
     transition: all .5s ease;
-    text-decoration: none;
+}
+body > .container-fluid {
+    margin: 70px 10px 65px 10px;
+    background-color: rgba(188,211,236,.8);
+    min-height: 882px;
+}
+.navbar-fixed-top {
+    font-size: 22px;
+}
+.navbar-brand {
+    height: 55px;
+    width: auto;
+    padding: 3px 25px 2px 25px;
+}
+.navbar-ul {
+    padding-right: 30px;
+}
+.navbar-li.active:hover, .navbar-li:hover {
+    background-color: rgba(98, 157, 223, .7);
     color: rgb(225,136,0);
 }
-a:hover {
-    color: rgb(255,166,30);
-    background-color: rgba(5,112,232,.8);
-}
-
-
-navbar {
-    width: 100%;
-    height: 60px;
-    background-color: rgba(5,112,232,.8);
-    text-align: right;
-} 
-.navbar-ul {
-    display: inline;
-}
-.navbar-li {
-    transition: all .5s ease;
-}
-.navbar-li:hover {
-    background-color: rgba(128,187,253,.8) !important;
-    color: rgb(255,166,30) !important;
-}
-.navbar-li.active {
-    background: rgb(98,157,223);
-}
-.navbar-a, .footer-a, .navbar-li {
-    color: #fff;
-    text-decoration: none;
-}
 .footer {
-    bottom: 5px;
-    left: 0;
-    right: 0;
+    bottom: 7px;
     width: 100%;
     position: fixed;
-    height: 50px;
+    min-height: 50px;
     background-color: rgba(98,157,223,.8);
-    z-index: 100;
 }
 .footer-ul {
     list-style-type: none;
-    margin-top: auto;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    margin-top: 5px;
     width: 100%;
 }
 .footer-li{
@@ -71,53 +52,28 @@ navbar {
     font-size: 20pt;
     text-decoration: none;
 }
-.footer-table{
-    border-style: none;
-    width: 100%;
-    left: 0;
-    right: 0;
-    text-align: center;
-}
-.flag {
-    width: 90px;
-}
-.flag img {
-    margin-top: 7px;
-}
 #flag {
     display: block;
+    margin-top: 13px;
+    margin-left: 40px;
     width: 40px;
-    height: 22px;
-    background: url(../img/engIconSmall.png) no-repeat;
-    text-indent: -9999px;
 }
 .info{
+    margin-top: 2px;
     color: #fff;
     font-style: italic;
     font-family: 'Playfair Display', serif;
     font-size: 12pt;
-    float: left;
     text-align: center;
-    margin-left: 15px;
+}
+a.footer-a {
+    color: #fff;
 }
 a.footer-a:hover {
     color: rgb(255,166,30);
     text-decoration: none;
-    background-color: rgba(0,0,0,0);
 }
-.container{
-	background-color: rgba(188,211,236,.8);
-    width: 100%;
-    height: 100%;
-    overflow-y: auto;
-}
-.logo{
-    float: left;
-    width: auto;
-    height: 50px;
-    margin-left: 25px;
-    margin-top: 5px;
-}
+
 .button-confirm {
     padding: 5px;
     padding-left: 25px;
@@ -153,20 +109,6 @@ a.footer-a:hover {
     height: auto;
     position:relative;
     display:inline-block;
-}
-.scrollbarTest{
-    width: auto;
-    height: auto;
-    position: fixed;
-    bottom:50%;
-    right:50%;
-    text-align: center;
-    color: white;
-    font-size: 35pt;
-    font-style: italic;
-    font-family: 'Playfair Display', serif;
-    background-color: rgba(188,211,236,.8);
-    padding: 5px 20px 5px 20px;
 }
 
 /* --------- Form Page --------- */
@@ -214,9 +156,9 @@ a.footer-a:hover {
 .error{
     display: none;
     margin-left: 10px;
-}			
+}
 .error_show{
-    color: #ff0000;
+    color: #d51010;
     font-size: 80%;
     vertical-align: baseline;
     line-height: 0;
@@ -229,7 +171,7 @@ input {
 }
 input:focus{
     outline: none;
-    border: 2px solid rgba(255,166,30,.7) !important;
+    border: 1px solid rgba(255,166,30,.7) !important;
     background-color : #fff !important;
 }
 ::-webkit-input-placeholder {
@@ -237,20 +179,20 @@ input:focus{
 }
 
 :-moz-placeholder { /* Firefox 18- */
-   color: rgba(5,112,232,.4);  
+   color: rgba(5,112,232,.4);
 }
 
 ::-moz-placeholder {  /* Firefox 19+ */
-   color: rgba(5,112,232,.4);  
+   color: rgba(5,112,232,.4);
 }
 
-:-ms-input-placeholder {  
-   color: rgba(5,112,232,.4);  
+:-ms-input-placeholder {
+   color: rgba(5,112,232,.4);
 }
 input.invalid {
     border: 2px solid red;
     background-color : #FFC7C7;
-}	
+}
 input.valid {
     border: 2px solid rgb(35,180,35);
     background-color : #CAFFC7;
@@ -281,15 +223,10 @@ a.table-logged-icon:hover {
     background-color: rgba(0,0,0,0);
 }
 
-/* --------- Bootstrap Edits --------- */
-.navbar-fixed-top {
-  background-color: rgba(5,112,232,.8);
-}
-
-/* --------- IDs --------- */   
+/* --------- IDs --------- */
 #pdfReader{
-    height: 100%;
     width: 100%;
+    min-height: inherit;
     border-style: none;
     display: block;
 }
@@ -300,22 +237,23 @@ a.table-logged-icon:hover {
 
 /* --------- Scroll Bar --------- */
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 12px;
 }
 ::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 3px rgba(0,0,0,.7); 
+    background-color: rgba(188,211,236,.4);
+    -webkit-box-shadow: inset 0 0 3px rgba(0,0,0,.7);
 }
 ::-webkit-scrollbar-thumb {
-    background: rgba(43,129,226,.4); 
-    -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,.3);
-    border-radius: 5px;
+    background: rgba(43,129,226,.5);
+    /*-webkit-box-shadow: inset 0 0 2px rgba(0,0,0,.3);*/
+    border-radius: 0px;
 }
 ::-webkit-scrollbar-thumb:hover{
-    background: rgba(43,129,226,.5);
-}
-::-webkit-scrollbar-thumb:active{
     background: rgba(43,129,226,.8);
 }
+::-webkit-scrollbar-thumb:active{
+    background: #024794;
+}
 ::-webkit-scrollbar-thumb:window-inactive {
-	background: rgba(43,129,226,.2); 
+	background: rgba(43,129,226,.2);
 }
