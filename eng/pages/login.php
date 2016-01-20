@@ -47,19 +47,19 @@
                     <th><h2>Registration</h2></th>
                     <tr>
                         <td><label for="name">Name:</label></td>
-                        <td><input type="text" id="name" name="name" placeholder="Nome"/></td>
+                        <td><input type="text" id="name" name="name" placeholder="Name"/></td>
                         <td></td>
                     </tr>
                     <tr><td></td><td><span id="errname" class="error">Field Required<br/></span></td></tr>
                     <tr>
                         <td><label for="surname">Surname:</label></td>
-                        <td><input type="text" id="surname" name="surname" placeholder="Cognome"/></td>
+                        <td><input type="text" id="surname" name="surname" placeholder="Surname"/></td>
                         <td></td>
                     </tr>
                     <tr><td></td><td><span id="errsurname" class="error">Field Required<br/></span></td></tr>
                     <tr>
                         <td><label for="email">E-Mail:</label></td>
-                        <td><input type="text" id="email" name="email" placeholder="indirizzo@email.com"/></td>
+                        <td><input type="text" id="email" name="email" placeholder="address@email.com"/></td>
                         <td></td>
                     </tr>
                     <tr><td></td><td><span id="erremail" class="error">Insert a valid address<br/></span></td></tr>
@@ -77,7 +77,7 @@
                     <tr><td></td><td><span id="errprivacy" class="error">Agree to the terms to register<br/></span></td></tr>
                     <tr>
                         <td></td>
-                        <td><div id="contact_submit"><button class="button-confirm" type="submit">Conferm</button></div></td>
+                        <td><div id="contact_submit"><button class="button-confirm" type="submit">Confirm</button></div></td>
                         <td><div id="contact_cancel"></div></td>
                     </tr>
                 </table>
@@ -119,7 +119,7 @@
                         foreach($row as $cell)      // $row is array... foreach( .. ) puts every element of $row to $cell variable
                             echo "<td>$cell</td>";
 
-                        echo "<td><a href='#' class='table-logged-icon' onclick=\"editRow(".$row[0].");\"><img src=\"../img/edit.png\" alt=\"Edit\" /></a></td><td><a href='#' class='table-logged-icon' onclick=\"deleteRow(".$row[0].");\"><img src=\"../img/delete.png\" alt=\"Delete\" /></a></td>";
+                        echo "<td><a href='#' class='table-logged-icon' onclick=\"editRow(".$row[0].");\"><img src=\"../../img/edit.png\" alt=\"Edit\" /></a></td><td><a href='#' class='table-logged-icon' onclick=\"deleteRow(".$row[0].");\"><img src=\"../../img/delete.png\" alt=\"Delete\" /></a></td>";
                         echo "</tr>";
                     }
                     mysqli_free_result($result);

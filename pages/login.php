@@ -39,7 +39,8 @@
     </nav>
 
     <!--- --- --- Content --- --- --->
-    <div class="container-fluid"><div class="row">
+    <div class="container-fluid">
+        <div class="row">
         <div class="col-md-6">
             <!--<iframe id="inputFrame" src="../pages/inputForm.html" id="inputForm"></iframe>-->
             <form id="regForm" name="regForm" method="post" action="sendform.php">
