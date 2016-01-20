@@ -39,8 +39,8 @@
     </nav>
 
     <!--- --- --- Content --- --- --->
-    <div class="container-fluid">
-        <div class="div-left">
+    <div class="container-fluid"><div class="row">
+        <div class="col-md-6">
             <!--<iframe id="inputFrame" src="../pages/inputForm.html" id="inputForm"></iframe>-->
             <form id="regForm" name="regForm" method="post" action="sendform.php">
                 <table class="table-form">
@@ -83,7 +83,7 @@
                 </table>
             </form>
         </div>
-        <div class="div-right">
+        <div class="col-md-6">
             <table class="table-logged">
                 <?php
                     $servername = "localhost";
@@ -126,6 +126,7 @@
                 ?>
             </table>
         </div>
+    </div>
     </div>
 
     <!---  Footer  --->
