@@ -3948,7 +3948,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
   color: #ffa61e;
-  background-color: rgba(5, 112, 232, 0.8);
+  background-color: rgba(98, 157, 223, .7);
 }
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
@@ -5766,4 +5766,3 @@ button.close {
     display: none !important;
   }
 }
-   

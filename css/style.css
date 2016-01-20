@@ -29,10 +29,6 @@ body > .container-fluid {
 .navbar-ul {
     padding-right: 30px;
 }
-.navbar-li.active:hover, .navbar-li:hover {
-    background-color: rgba(98, 157, 223, .7);
-    color: rgb(225,136,0);
-}
 .footer {
     bottom: 7px;
     width: 100%;
