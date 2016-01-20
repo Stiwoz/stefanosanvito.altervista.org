@@ -25,7 +25,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html"><img class="navbar-brand" alt="Level Up!" src="../img/logo.png"/></a>
+                <a class="navbar-brand" href="index.html"><img class="navbar-brand" alt="Level Up!" src="../../img/logo.png"/></a>
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-right navbar-ul">
@@ -39,8 +39,8 @@
     </nav>
 
     <!--- --- --- Content --- --- --->
-    <div class="container">
-        <div class="div-left">
+    <div class="container-fluid"><div class="row">
+        <div class="col-md-6">
             <!--<iframe id="inputFrame" src="../pages/inputForm.html" id="inputForm"></iframe>-->
             <form id="regForm" name="regForm" method="post" action="sendform.php">
                 <table class="table-form">
@@ -83,7 +83,7 @@
                 </table>
             </form>
         </div>
-        <div class="div-right">
+        <div class="col-md-6">
             <table class="table-logged">
                 <?php
                     $servername = "localhost";
@@ -127,6 +127,7 @@
             </table>
         </div>
     </div>
+    </div>
 
     <!---  Footer  --->
     <div class="footer">
@@ -145,7 +146,7 @@
                     </ul>
                 </div>
                 <div class="col-md-1">
-                    <a class="footer-a" id="flag" href="../../index.html"><img src="../img/italyIconSmall.png"/></a>
+                    <a class="footer-a" id="flag" href="../../index.html"><img src="../../img/italyIconSmall.png"/></a>
                 </div>
             </div>
         </div>
