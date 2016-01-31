@@ -10,7 +10,7 @@ html {
 body{
     background-color: transparent;
 }
-a {
+a, button {
     transition: all .5s ease;
 }
 body > .container-fluid {
@@ -70,36 +70,34 @@ a.footer-a:hover {
     text-decoration: none;
 }
 
-.button-confirm {
+.button-confirm, .button-cancel {
     padding: 5px;
     padding-left: 25px;
     border: 2px solid rgba(5,112,232,.7);
-    background: rgba(188,211,236,.2) url(../img/tick.png) no-repeat scroll 5px center;
     border-radius: 8px;
+    min-width: 100px;
+}
+.button-confirm {
+    background: rgba(188,211,236,.2) url(../img/tick.png) no-repeat scroll 5px center;
+}
+.button-cancel {
+    background: rgba(188,211,236,.2) url(../img/cross.png) no-repeat scroll 5px center;
+}
+.button-confirm:hover, .button-cancel:hover{
+    color: rgb(255,166,30);
+    font-style: bold;
 }
 .button-confirm:hover{
     background: rgba(5,112,232,.7) url(../img/tick.png) no-repeat scroll 5px center;
-    color: rgb(255,166,30);
-    font-style: bold;
-}
-.button-confirm:active, .button-confirm:focus, .button-cancel:focus {
-    border: 3px solid rgb(255,166,30);
-    outline: none;
-}
-.button-cancel {
-    padding: 5px;
-    padding-left: 25px;
-    border: 2px solid rgba(5,112,232,.7);
-    background: rgba(188,211,236,.2) url(../img/cross.png) no-repeat scroll 5px center;
 }
 .button-cancel:hover{
     background: rgba(5,112,232,.7) url(../img/cross.png) no-repeat scroll 5px center;
-    color: rgb(255,166,30);
-    font-style: bold;
 }
-.button-cancel:active {
+.button-confirm:active, .button-confirm:focus, .button-cancel:active, .button-cancel:focus {
     border: 3px solid rgb(255,166,30);
+    outline: none;
 }
+
 .imgClasse{
     width: 100%;
     height: auto;

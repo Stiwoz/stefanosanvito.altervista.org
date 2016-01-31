@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    
+
                 $('#engFlag').on('click', function() {
                     var href = document.location.href;
                     var page = href.substr(href.lastIndexOf('/') + 1);
@@ -8,7 +8,7 @@ $(document).ready(function() {
                     else
                         $(location).attr('href','../eng/pages/'+page);
                 });
-			// Real-time Validation 
+			// Real-time Validation
 				// Name can't be blank
 				$('#name').on('input', function() {
 					var input=$(this);
@@ -34,8 +34,8 @@ $(document).ready(function() {
                         $('#errsurname').removeClass("error").addClass("error_show");
                     }
 				});
-				
-				// Email must be an email 
+
+				// Email must be an email
 				$('#email').on('input', function() {
 					var input=$(this);
 					var re = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
@@ -49,7 +49,7 @@ $(document).ready(function() {
                         $('#erremail').removeClass("error").addClass("error_show");
                     }
 				});
-				
+
 			//	Date can't be blank
 				$('#date').on('input', function() {
 					var input=$(this);
@@ -61,21 +61,21 @@ $(document).ready(function() {
 					else{
                         input.removeClass("valid").addClass("invalid");
                         $('#errdate').removeClass("error").addClass("error_show");
-                    }	
+                    }
 				});
-                
+
                 // Acconsento must be checked
                 $("input:radio[name='privacy']").change(function () {
-                    if ($("input:radio[name='privacy'][value='yes']").is(":checked")) { 
+                    if ($("input:radio[name='privacy'][value='yes']").is(":checked")) {
                         $('#errprivacy').removeClass("error_show").addClass("error");
                         $("input:radio[name=privacy]").removeClass("invalid").addClass("valid");
                     }
-                    else { 
+                    else {
                         $('#errprivacy').removeClass("error").addClass("error_show");
                         $("input[name='privacy']").removeClass("valid").addClass("invalid");
                     }
-                }); 
-                
+                });
+
             // Clean Form
                 $("#delete").on('click',function(event){
 				    $("#name").val("");
@@ -83,7 +83,7 @@ $(document).ready(function() {
                     $("#date").val("");
                     $("#email").val("");
 			    });
-		
+
 		//	After Form Submitted Validation
 			$("#contact_submit button").click(function(event){
                 event.preventDefault();
@@ -104,13 +104,13 @@ $(document).ready(function() {
                             confirmButtonColor: "rgba(5,112,232,.7)",
                             cancelButtonColor: "rgb(188,211,236)",
                             confirmButtonText: "Conferma",
-                            cancelButtonText: "Annula",
+                            cancelButtonText: "Annulla",
                             closeOnConfirm: false,
                             closeOnCancel: false,
                             showLoaderOnConfirm: true
                         },
                       function(isConfirm){
-                                if (isConfirm) { 
+                                if (isConfirm) {
                                     setTimeout(function(){swal("Utente Registrato");}, 2000);
                                     document.regForm.submit();
                                 } else {
@@ -123,7 +123,7 @@ $(document).ready(function() {
 function deleteRow(n) {
     $.ajax({
         type: 'GET',
-        url: 'deleteRow.php?n='+n,           
+        url: 'deleteRow.php?n='+n,
         success: function()
                   {
                     swal({title: "Utente Eliminato",
@@ -133,13 +133,13 @@ function deleteRow(n) {
                             confirmButtonText: "OK",
                             closeOnConfirm: false,
                         }, function(){$(location).attr('href','../pages/login.php');});
-                  }           
+                  }
        });
 }
 function editRow(n) {
     swal({title: "Modifica Dati",
           html: "<table class='table-form-popup'><tr><td><label for='name'>Nome:</label></td><td><input type='text' id='name' name='name' placeholder='Nome'/></td><td></td></tr><tr><td></td><td><span id='errname' class='error'>Campo Obbligatorio<br/></span></td></tr><tr><td><label for='surname'>Cognome:</label></td><td><input type='text' id='surname' name='surname' placeholder='Cognome'/></td><td></td></tr><tr><td></td><td><span id='errsurname' class='error'>Campo Obbligatorio<br/></span></td></tr><tr><td><label for='email'>E-Mail:</label></td><td><input type='text' id='email' name='email' placeholder='indirizzo@email.com'/></td><td></td></tr><tr><td></td><td><span id='erremail' class='error'>Inserire un indirizzo valido<br/></span></td></tr><tr><td><label for='date'>Data di Nascita:</label></td><td><input type='date' id='date' name='date' max='2018-01-01' min='1899-12-31'/></td><td></td></tr><tr><td></td><td><span id='errdate' class='error'>Inserire una data valida<br/></span></td></tr></table>",
-          type: "warning",       
+          type: "warning",
           showCancelButton: true,
           confirmButtonColor: "rgb(5,112,232)",
           cancelButtonColor: "rgb(188,211,236)",
@@ -150,7 +150,7 @@ function editRow(n) {
           showLoaderOnConfirm: true
                         },
                       function(isConfirm){
-                                if (isConfirm) { 
+                                if (isConfirm) {
                                     var name = $("#editname").val();
                                     var surname = $("#editsurname").val();
                                     var email = $("#editemail").val();
@@ -158,17 +158,17 @@ function editRow(n) {
                                     setTimeout(function(){swal("Utente Registrato");}, 2000);
                                     $.ajax({
                                             type: 'GET',
-                                            url: 'editRow.php?ID='+n+'&name='+name+'&surname='+surname+'&email='+email+'&date='+date,           
+                                            url: 'editRow.php?ID='+n+'&name='+name+'&surname='+surname+'&email='+email+'&date='+date,
                                             success: function() {
                                                 $(location).attr('href','../pages/login.php');
-                                            }           
+                                            }
                                     });
-                                    
+
                                 } else {
                                     swal("Modifica Annullata", "Utente non modificato", "error");
                                 }
                         });
-    
+
 }
 function trueDate(data) {
     var today=new Date();//data attuale
@@ -178,7 +178,7 @@ function trueDate(data) {
     else
         return true;
 }
-/* --- Funzione Mostra Data e Ora 
+/* --- Funzione Mostra Data e Ora
 function displayRefresh() {
     var refresh=1000; // Refresh rate in milli seconds
     time = setTimeout('displayDate()',refresh);
