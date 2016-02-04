@@ -14,9 +14,11 @@ a {
     transition: all .5s ease;
 }
 body > .container-fluid {
-    margin: 70px 10px 65px 10px;
+    margin: 70px 10px 5px 10px;
     background-color: rgba(188,211,236,.8);
     min-height: 882px;
+    padding: none;
+    overflow-y: auto;
 }
 .navbar-fixed-top {
     font-size: 22px;
