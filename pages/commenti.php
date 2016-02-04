@@ -42,44 +42,39 @@
     <div class="container-fluid container-main">
         <div class="row">
             <div class="col-md-6">
-                <!--<iframe id="inputFrame" src="../pages/inputForm.html" id="inputForm"></iframe>-->
-                <form id="regForm" name="regForm" method="post" action="sendform.php">
+                <form id="commForm" name="commForm" method="post" action="sendform.php">
                     <table class="table-form">
-                        <th><h2>Registrazione</h2></th>
+                        <th colspan="2"><h2>Lascia un Commento</h2></th>
                         <tr>
-                            <td><label for="name">Nome:</label></td>
-                            <td><input type="text" id="name" name="name" placeholder="Nome"/></td>
-                            <td></td>
+                            <td><label for="username">Username:</label></td>
+                            <td><input type="text" id="username" name="username" placeholder="Username"/></td>
                         </tr>
-                        <tr><td></td><td><span id="errname" class="error">Campo Obbligatorio<br/></span></td></tr>
-                        <tr>
-                            <td><label for="surname">Cognome:</label></td>
-                            <td><input type="text" id="surname" name="surname" placeholder="Cognome"/></td>
-                            <td></td>
-                        </tr>
-                        <tr><td></td><td><span id="errsurname" class="error">Campo Obbligatorio<br/></span></td></tr>
+                        <tr><td></td><td><span id="errusername" class="error">Campo Obbligatorio<br/></span></td></tr>
                         <tr>
                             <td><label for="email">E-Mail:</label></td>
                             <td><input type="text" id="email" name="email" placeholder="indirizzo@email.com"/></td>
-                            <td></td>
                         </tr>
                         <tr><td></td><td><span id="erremail" class="error">Inserire un indirizzo valido<br/></span></td></tr>
                         <tr>
-                            <td><label for="date">Data di Nascita:</label></td>
-                            <td><input type="date" id="date" name="date" max="2018-01-01" min="1899-12-31"/></td>
                             <td></td>
+                            <td><input type="checkbox" id="anon" name="anon" /> <abbr title="L'indirizzo E-Mail viene omesso e l'Username viene sostituito con 'Anonimo'">Anonimo</abbr></td>
                         </tr>
-                        <tr><td></td><td><span id="errdate" class="error">Inserire una data valida<br/></span></td></tr>
                         <tr>
-                            <td><label for="radioprivacy">Autorizzo il trattamento dei miei dati personali ai sensi del <a href="http://www.camera.it/parlam/leggi/deleghe/03196dl.htm">D.lgs. 196 del 30 giugno 2003</a></label></td>
-                            <td><input type="radio" id="privacy" name="privacy" value="yes"/>Acconsento <input type="radio" name="privacy" value="no" checked/>Non Acconsento</td>
+                            <td><label for="comment">Commento:</label><div id="commentChars"></div></td>
+                            <td><textarea id="comment" name="comment" rows="3" placeholder="Inserire il commento qui"></textarea></td>
+                        </tr>
+                        <tr><td></td><td><span id="errcomment" class="error">Numero di caratteri non valido<br/></span></td></tr>
+                        <tr>
+                            <td colspan="2"><label for="radioprivacy">Autorizzo il trattamento dei miei dati personali<br/>ai sensi del <a href="http://www.camera.it/parlam/leggi/deleghe/03196dl.htm">D.lgs. 196 del 30 giugno 2003</a></label></td>
+                        </tr>
+                        <tr>
                             <td></td>
+                            <td><input type="radio" id="privacy" name="privacy" value="yes"/>Acconsento <input type="radio" name="privacy" value="no" checked/>Non Acconsento</td>
                         </tr>
                         <tr><td></td><td><span id="errprivacy" class="error">Acconsentire per la registrazione<br/></span></td></tr>
                         <tr>
                             <td></td>
-                            <td><div id="contact_submit"><button class="button-confirm" type="submit">Conferma</button></div></td>
-                            <td><div id="contact_cancel"></div></td>
+                            <td><div id="contact_submit"><button class="button-confirm" type="submit">Conferma</button> <button class="button-cancel" type="reset">Cancella</button></div></td>
                         </tr>
                     </table>
                 </form>

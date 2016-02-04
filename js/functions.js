@@ -1,16 +1,8 @@
 $(document).ready(function() {
-    
-                $('#engFlag').on('click', function() {
-                    var href = document.location.href;
-                    var page = href.substr(href.lastIndexOf('/') + 1);
-                    if(page == "index.html")
-                        $(location).attr('href','../eng/'+page);
-                    else
-                        $(location).attr('href','../eng/pages/'+page);
-                });
+
 			// Real-time Validation 
 				// Name can't be blank
-				$('#name').on('input', function() {
+				$('#username').on('input', function() {
 					var input=$(this);
 					var is_name=input.val();
 					if(is_name){
@@ -19,23 +11,27 @@ $(document).ready(function() {
                     }
 					else{
                         input.removeClass("valid").addClass("invalid");
-                        $('#errname').removeClass("error").addClass("error_show");
+                        $('#errusername').removeClass("error").addClass("error_show");
                     }
 				});
-                $('#surname').on('input', function() {
-					var input=$(this);
-					var is_name=input.val();
-					if(is_name){
+
+                // Checking number of chars in Comment
+                $('#comment').on('input', function() {
+                    var maxChars = 500;
+                    var input=$(this);
+                    var chars=input.val().length;
+                    $('#commentChars').empty().text(maxChars - chars);
+                    if(chars <= maxChars && chars > 0){
                         input.removeClass("invalid").addClass("valid");
-                        $('#errsurname').removeClass("error_show").addClass("error");
+                        $('#errcomment').removeClass("error_show").addClass("error");
                     }
-					else{
+                    else{
                         input.removeClass("valid").addClass("invalid");
-                        $('#errsurname').removeClass("error").addClass("error_show");
+                        $('#errcomment').removeClass("error").addClass("error_show");
                     }
-				});
-				
-				// Email must be an email 
+                 });
+
+                // Email must be an email
 				$('#email').on('input', function() {
 					var input=$(this);
 					var re = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
@@ -49,21 +45,7 @@ $(document).ready(function() {
                         $('#erremail').removeClass("error").addClass("error_show");
                     }
 				});
-				
-			//	Date can't be blank
-				$('#date').on('input', function() {
-					var input=$(this);
-					var date=$(this).val();
-					if(date && trueDate(date)){
-                        input.removeClass("invalid").addClass("valid");
-                        $('#errdate').removeClass("error_show").addClass("error");
-                    }
-					else{
-                        input.removeClass("valid").addClass("invalid");
-                        $('#errdate').removeClass("error").addClass("error_show");
-                    }	
-				});
-                
+
                 // Acconsento must be checked
                 $("input:radio[name='privacy']").change(function () {
                     if ($("input:radio[name='privacy'][value='yes']").is(":checked")) { 
@@ -74,20 +56,12 @@ $(document).ready(function() {
                         $('#errprivacy').removeClass("error").addClass("error_show");
                         $("input[name='privacy']").removeClass("valid").addClass("invalid");
                     }
-                }); 
-                
-            // Clean Form
-                $("#delete").on('click',function(event){
-				    $("#name").val("");
-                    $("#surname").val("");
-                    $("#date").val("");
-                    $("#email").val("");
-			    });
+                });
 		
 		//	After Form Submitted Validation
-			$("#contact_submit button").click(function(event){
+			$("#contact_submit button.button-confirm").click(function(event){
                 event.preventDefault();
-				var form_data=$("#regForm").serializeArray();
+				var form_data=$("#commForm").serializeArray();
 				var error_free=true;
 				for (var input in form_data){
 					var element=$("#"+form_data[input]['name']);
@@ -104,7 +78,7 @@ $(document).ready(function() {
                             confirmButtonColor: "rgba(5,112,232,.7)",
                             cancelButtonColor: "rgb(188,211,236)",
                             confirmButtonText: "Conferma",
-                            cancelButtonText: "Annula",
+                            cancelButtonText: "Annulla",
                             closeOnConfirm: false,
                             closeOnCancel: false,
                             showLoaderOnConfirm: true
@@ -112,7 +86,7 @@ $(document).ready(function() {
                       function(isConfirm){
                                 if (isConfirm) { 
                                     setTimeout(function(){swal("Utente Registrato");}, 2000);
-                                    document.regForm.submit();
+                                    document.commForm.submit();
                                 } else {
                                     swal("Registrazione Annullata", "Utente non registrato", "error");
                                 }
