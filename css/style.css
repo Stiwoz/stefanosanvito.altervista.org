@@ -21,13 +21,15 @@ body > .container-fluid {
 .navbar-fixed-top {
     font-size: 22px;
 }
-.navbar-brand {
+.navbar-brand > img {
     height: 55px;
     width: auto;
-    padding: 3px 25px 2px 25px;
+}
+.navbar-brand {
+    padding: 3px 0px 2px 25px;
 }
 .navbar-ul {
-    padding-right: 30px;
+    padding-right: 25px;
 }
 .footer {
     bottom: 7px;
@@ -43,7 +45,7 @@ body > .container-fluid {
 }
 .footer-li{
     display: inline;
-	padding: 10px;
+	padding: 7px;
     color: #fff;
     font-size: 20pt;
     text-decoration: none;
