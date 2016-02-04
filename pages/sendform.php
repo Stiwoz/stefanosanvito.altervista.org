@@ -1,26 +1,32 @@
 <?php
 
     //Put form elements into post variables (this is where you would sanitize your data)
-    $name = trim($_POST["name"]);
-    $surname = trim($_POST["surname"]);
-    $email = trim($_POST["email"]);
-    $date = trim($_POST["date"]);
+    $user = trim($_GET["username"]);
+    $email = trim($_GET["email"]);
+    $anon = trim($_GET["anon"]);
+    $date = trim($_GET["date"]);
+    $comment = trim($_GET["comment"]);
 
-    $servername = "localhost";
-    $username = "stefanosanvito";
-    $password = "";
-    $dbname = "my_stefanosanvito";
-    $dbtable = "logged_users";
+    $server_name = "localhost";
+    $db_username = "stefanosanvito";
+    $db_password = "";
+    $db_name = "my_stefanosanvito";
+    $db_table = "comments";
 
-    $conn = mysqli_connect($servername, $username, $password, $dbname);
+    if($anon == "yes")
+        $anon = 1;
+    else
+        $anon = 0;
+
+    $conn = mysqli_connect($server_name, $db_username, $db_password, $db_name);
     if (!$conn)
         die("Can't connect to database");
 
-    $sql = "INSERT INTO {$dbtable} (`ID`, `Nome`, `Cognome`, `E-Mail`, `Data di Nascita`) VALUE (NULL, '$name', '$surname', '$email', STR_TO_DATE('$date', '%Y-%m-%d'))";
+    $sql = "INSERT INTO {$db_table} (`ID`, `Username`, `E-Mail`, `Date`, `Anonimous`, `Comment`) VALUE (NULL, '$user', '$email', CURRENT_DATE, '$anon', '$comment')";
 
     $result = mysqli_query($conn, $sql);
     if (!$result)
-        die("Query to show fields from table failed");
+        die("Query failed");
                 
     mysqli_free_result($result);
 
@@ -28,7 +34,7 @@ function Redirect($permanent = true)
 {
     if (headers_sent() === false)
     {
-    	header('Location: login.php', true, ($permanent === true) ? 301 : 302);
+    	header('Location: commenti.php', true, ($permanent === true) ? 301 : 302);
     }
 
     exit();

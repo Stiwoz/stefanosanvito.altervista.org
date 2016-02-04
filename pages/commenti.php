@@ -1,5 +1,5 @@
 <!doctype php>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -41,84 +41,112 @@
     <!--- --- --- Content --- --- --->
     <div class="container-fluid container-main">
         <div class="row">
-            <div class="col-md-6">
-                <form id="commForm" name="commForm" method="post" action="sendform.php">
-                    <table class="table-form">
-                        <th colspan="2"><h2>Lascia un Commento</h2></th>
-                        <tr>
-                            <td><label for="username">Username:</label></td>
-                            <td><input type="text" id="username" name="username" placeholder="Username"/></td>
-                        </tr>
-                        <tr><td></td><td><span id="errusername" class="error">Campo Obbligatorio<br/></span></td></tr>
-                        <tr>
-                            <td><label for="email">E-Mail:</label></td>
-                            <td><input type="text" id="email" name="email" placeholder="indirizzo@email.com"/></td>
-                        </tr>
-                        <tr><td></td><td><span id="erremail" class="error">Inserire un indirizzo valido<br/></span></td></tr>
-                        <tr>
-                            <td></td>
-                            <td><input type="checkbox" id="anon" name="anon" /> <abbr title="L'indirizzo E-Mail viene omesso e l'Username viene sostituito con 'Anonimo'">Anonimo</abbr></td>
-                        </tr>
-                        <tr>
-                            <td><label for="comment">Commento:</label><div id="commentChars"></div></td>
-                            <td><textarea id="comment" name="comment" rows="3" placeholder="Inserire il commento qui"></textarea></td>
-                        </tr>
-                        <tr><td></td><td><span id="errcomment" class="error">Numero di caratteri non valido<br/></span></td></tr>
-                        <tr>
-                            <td colspan="2"><label for="radioprivacy">Autorizzo il trattamento dei miei dati personali<br/>ai sensi del <a href="http://www.camera.it/parlam/leggi/deleghe/03196dl.htm">D.lgs. 196 del 30 giugno 2003</a></label></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td><input type="radio" id="privacy" name="privacy" value="yes"/>Acconsento <input type="radio" name="privacy" value="no" checked/>Non Acconsento</td>
-                        </tr>
-                        <tr><td></td><td><span id="errprivacy" class="error">Acconsentire per la registrazione<br/></span></td></tr>
-                        <tr>
-                            <td></td>
-                            <td><div id="contact_submit"><button class="button-confirm" type="submit">Conferma</button> <button class="button-cancel" type="reset">Cancella</button></div></td>
-                        </tr>
-                    </table>
-                </form>
+            <div class="col-md-5">
+                <div class="row">
+                    <div class="col-md-2 col-sm-1 col-xs-1"></div>
+                    <div class="col-md-7 col-sm-10 col-xs-10">
+                        <form class="comment-form" id="commForm" name="commForm" method="get" action="sendform.php">
+                            <h1>Lascia un Commento</h1>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-xs-12 col-md-6"><label for="username">Username</label></div>
+                                    <div class="col-xs-12 col-md-6"><span id="errusername" class="error">Campo obbligatorio</span></div>
+                                </div>
+                                <input type="text" class="form-control" name="username" id="username" placeholder="Username"/>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-xs-12 col-md-6"><label for="email">Indirizzo E-Mail</label></div>
+                                    <div class="col-xs-12 col-md-6"><span id="erremail" class="error">Inserire un indirizzo valido</span></div>
+                                </div>
+                                <input type="text" class="form-control" name="email" id="email" placeholder="indirizzo@email.com"/>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" class="valid" id="anon" name="anon" value="yes"/><strong>Anonimo</strong> <a href="#" class="anonInfo" data-toggle="tooltip" data-placement="right" title="L'indirizzo E-Mail viene omesso e l'Username viene sostituito con 'Anonimo'"><img src="../img/question-mark-orange.png"/></a>
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-2 col-xs-8"><label for="email">Commento</label></div>
+                                    <div class="col-md-1 col-md-push-9 col-xs-4"><span class="charNumb">500</span></div>
+                                    <div class="col-md-9 col-xs-12"><span id="errcomment" class="error center-block">Numero di caratteri non valido</span></div>
+                                </div>
+                                <textarea class="form-control vresize" name="comment" id="comment" rows="3" placeholder="Scrivi il tuo commento qui..."></textarea>
+                            </div>
+                            <div class="divider"></div>
+                            <strong>Autorizzo il trattamento dei miei dati personali ai sensi del <a href="http://www.camera.it/parlam/leggi/deleghe/03196dl.htm">D.lgs. 196 del 30 giugno 2003</a></strong>
+                            <div class="text-center">
+                                <div class="center-block">
+                                    <div class="radio-inline">
+                                        <label>
+                                            <input type="radio" name="privacy" id="privacy" value="yes"/>
+                                            Acconsento
+                                        </label>
+                                    </div>
+                                    <div class="radio-inline">
+                                        <label>
+                                            <input type="radio" name="privacy" id="privacy" value="no" checked/>
+                                            Non Acconsento
+                                        </label>
+                                    </div>
+                                </div>
+                                <span id="errprivacy" class="error">Acconsentire per la registrazione</span>
+                                <div class="divider"></div>
+                                <div class="center-block">
+                                    <button type="submit" class="button-confirm">Conferma</button>
+                                    <button type="reset" class="button-cancel">Cancella</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-1 col-xs-1"></div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-7">
                 <table class="table-logged">
                 <?php
-                    $servername = "localhost";
+                    $server_name = "localhost";
                     $username = "stefanosanvito";
                     $password = "";
-                    $dbname = "my_stefanosanvito";
-                    $dbtable ="logged_users";
+                    $db_name = "my_stefanosanvito";
+                    $db_table ="comments";
 
-                    $sql = "SELECT * FROM ".$dbtable." ORDER BY ID";
+                    $query = "SELECT * FROM ".$db_table." ORDER BY ID";
 
-                    $conn = mysqli_connect($servername, $username, $password, $dbname);
-                    if (!$conn)
-                        die("Can't connect to database");
+                    $mysqli = new mysqli($server_name,$username,$password,$db_name);
 
-                    $result = mysqli_query($conn, $sql);
-                    if (!$result)
-                        die("Query to show fields from table failed");
-
-                    $fields_num = mysqli_num_fields($result);
-
-                /* --- --- Header --- --- */
-                    echo "<tr>";
-                    for($i=0; $i<($fields_num+2); $i++) {
-                        $field = mysqli_fetch_field($result);
-                        echo "<th>{$field->name}</th>";
+                    if (mysqli_connect_errno()) {
+                        die("Can't connect to database: " . mysqli_connect_error());
+                        exit();
                     }
+
+                    $result = $mysqli->query($query);
+                    if (!$result) {
+                        die("Query to show fields from table failed");
+                        exit();
+                    }
+
+                    echo "<tr>";
+                        echo"<th>Username</th>";
+                        echo"<th>E-Mail</th>";
+                        echo"<th>Data</th>";
+                        echo"<th>Commento</th>";
                     echo "</tr>";
 
-                /* --- --- Content --- --- */
-                    while($row = mysqli_fetch_row($result)) {
+                    while($row = $result->fetch_assoc()){
                         echo "<tr>";
-
-                        foreach($row as $cell)      // $row is array... foreach( .. ) puts every element of $row to $cell variable
-                            echo "<td>$cell</td>";
-
-                        echo "<td><a href='#' class='table-logged-icon' onclick=\"editRow(".$row[0].");\"><img src=\"../img/edit.png\" alt=\"Modifica\" /></a></td><td><a href='#' class='table-logged-icon' onclick=\"deleteRow(".$row[0].");\"><img src=\"../img/delete.png\" alt=\"Elimina\" /></a></td>";
+                            echo "<td>";
+                                echo ($row['Anonimous'] ? 'Anonimo' : $row['Username']);
+                            echo "</td>";
+                            echo "<td>";
+                                echo ($row['Anonimous'] ? '-' : $row['E-Mail']);
+                            echo "</td>";
+                            echo "<td>".$row['Date']."</td>";
+                            echo "<td>".$row['Comment']."</td>";
                         echo "</tr>";
                     }
-                    mysqli_free_result($result);
+                    $mysqli->close();
                 ?>
                 </table>
             </div>

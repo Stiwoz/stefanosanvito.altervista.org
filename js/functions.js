@@ -1,5 +1,9 @@
 $(document).ready(function() {
 
+                $(function () {
+                    $('[data-toggle="tooltip"]').tooltip()
+                });
+
 			// Real-time Validation 
 				// Name can't be blank
 				$('#username').on('input', function() {
@@ -16,17 +20,19 @@ $(document).ready(function() {
 				});
 
                 // Checking number of chars in Comment
+                var maxChars = 500;
                 $('#comment').on('input', function() {
-                    var maxChars = 500;
                     var input=$(this);
                     var chars=input.val().length;
-                    $('#commentChars').empty().text(maxChars - chars);
-                    if(chars <= maxChars && chars > 0){
+                    $('.charNumb').empty().text(maxChars - chars);
+                    if(chars <= maxChars && chars !== 0){
                         input.removeClass("invalid").addClass("valid");
+                        $('.charNumb').removeClass("errorChars");
                         $('#errcomment').removeClass("error_show").addClass("error");
                     }
                     else{
                         input.removeClass("valid").addClass("invalid");
+                        $('.charNumb').addClass("errorChars");
                         $('#errcomment').removeClass("error").addClass("error_show");
                     }
                  });
@@ -59,7 +65,7 @@ $(document).ready(function() {
                 });
 		
 		//	After Form Submitted Validation
-			$("#contact_submit button.button-confirm").click(function(event){
+			$("button.button-confirm").click(function(event){
                 event.preventDefault();
 				var form_data=$("#commForm").serializeArray();
 				var error_free=true;
@@ -75,8 +81,6 @@ $(document).ready(function() {
                             text: "Premere Conferma per continuare",
                             type: "info",
                             showCancelButton: true,
-                            confirmButtonColor: "rgba(5,112,232,.7)",
-                            cancelButtonColor: "rgb(188,211,236)",
                             confirmButtonText: "Conferma",
                             cancelButtonText: "Annulla",
                             closeOnConfirm: false,
@@ -86,13 +90,23 @@ $(document).ready(function() {
                       function(isConfirm){
                                 if (isConfirm) { 
                                     setTimeout(function(){swal("Utente Registrato");}, 2000);
-                                    document.commForm.submit();
+                                    $('#commForm').submit();
                                 } else {
                                     swal("Registrazione Annullata", "Utente non registrato", "error");
                                 }
                         });
 				    }
 			});
+            $("button.button-cancel").click(function(event){
+                event.preventDefault();
+                $('.error_show').removeClass("error_show").addClass("error");
+                $('.error_chars').removeClass("error_chars");
+                $('.charNumb').empty().text(maxChars);
+                $('.invalid').removeClass("invalid");
+                $('.valid').removeClass("valid");
+                $('#anon').addClass("valid");
+                document.commForm.reset();
+            });
 });
 function deleteRow(n) {
     $.ajax({
@@ -144,21 +158,4 @@ function editRow(n) {
                         });
     
 }
-function trueDate(data) {
-    var today=new Date();//data attuale
-    if((parseInt(data.substring(0,4))>parseInt(today.getFullYear()))||(parseInt(data.substring(0,4))==parseInt(today.getFullYear())&&parseInt(data.substring(5,7))>(parseInt(today.getMonth())+1))||(parseInt(data.substring(0,4))==parseInt(today.getFullYear())&&parseInt(data.substring(5,7))==(parseInt(today.getMonth())+1)&&parseInt(data.substring(8,10))>=parseInt(today.getDate()))) {
-        return false;
-    }
-    else
-        return true;
-}
-/* --- Funzione Mostra Data e Ora 
-function displayRefresh() {
-    var refresh=1000; // Refresh rate in milli seconds
-    time = setTimeout('displayDate()',refresh);
-}
-function displayDate() {
-    document.getElementById("date").innerHTML = new Date();
-    tt = displayRefresh();
-}
---- */
+

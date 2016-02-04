@@ -3,7 +3,6 @@
 @import url(https://fonts.googleapis.com/css?family=Sansita+One);
 
 html {
-    background-color: #fff;
     background: url(../img/bg.png) no-repeat center center fixed;
     background-size: cover;
 }
@@ -51,7 +50,7 @@ body > .container-fluid {
 }
 #flag {
     display: block;
-    margin-top: 13px;
+    margin-top: 15px;
     margin-left: 40px;
     width: 40px;
 }
@@ -72,10 +71,10 @@ a.footer-a:hover, a.footer-a:active {
 }
 
 .button-confirm {
-    background: rgba(188,211,236,.2) url(../img/tick.png) no-repeat scroll 5px center;
+    background: rgba(188,211,236,.5) url(../img/tick.png) no-repeat scroll 5px center;
 }
 .button-cancel {
-    background: rgba(188,211,236,.2) url(../img/cross.png) no-repeat scroll 5px center;
+    background: rgba(188,211,236,.5) url(../img/cross.png) no-repeat scroll 5px center;
 }
 .button-confirm, .button-cancel {
     padding: 5px;
@@ -90,7 +89,7 @@ a.footer-a:hover, a.footer-a:active {
     background: rgba(5,112,232,.7) url(../img/cross.png) no-repeat scroll 5px center;
 }
 .button-confirm:active, .button-confirm:focus, .button-cancel:focus, .button-cancel:active {
-    border: 3px solid rgb(255,166,30);
+    border: 2px solid rgb(255,166,30);
     outline: none;
 }
 .button-cancel:hover, .button-confirm:hover {
@@ -104,28 +103,36 @@ a.footer-a:hover, a.footer-a:active {
     position:relative;
     display:inline-block;
 }
-
+.divider {
+    height: 1px;
+    width:100%;
+    display:block; /* for use on default inline elements like span */
+    margin: 9px 0;
+    overflow: hidden;
+    background-color: rgba(5,112,232,.4);
+}
+.vresize{
+    resize: vertical;
+}
+.hresize {
+    resize: horizontal;
+}
 /* --------- Form Page --------- */
 
-.table-form{
-    border-style: none;
-    background: -webkit-radial-gradient(rgba(5,112,232,.5), rgba(5,112,232,0)); /* Safari 5.1 to 6.0 */
-    background: -o-radial-gradient(rgba(5,112,232,.5), rgba(5,112,232,0)); /* For Opera 11.6 to 12.0 */
-    background: -moz-radial-gradient(rgba(5,112,232,.5), rgba(5,112,232,0)); /* For Firefox 3.6 to 15 */
-    background: radial-gradient(rgba(5,112,232,.5), rgba(5,112,232,0)); /* Standard syntax */
+.comment-form{
+    margin-top: 35px;
+    border-radius: 14px;
+    border: 10px transparent solid;
+    background-color: rgba(5,112,232,.2);
 }
-.table-form th{
-    column-fill:100%;
+.anonInfo {
+    padding-left: 10px;
 }
-.table-form-popup{
-    border-style: none;
-    border-collapse: collapse;
-    background-color: rgba(0,0,0,0);
+.charNumb {
+    float: right;
 }
-#regForm label{
-    display: inline-block;
-    width: 200px;
-    text-align: right;
+.error_chars {
+    color: #d51010;
 }
 .error{
     display: none;
@@ -133,12 +140,10 @@ a.footer-a:hover, a.footer-a:active {
 }
 .error_show{
     color: #d51010;
-    font-size: 80%;
-    vertical-align: baseline;
-    line-height: 0;
-    position: relative;
-    top: 0.1em;
-    background-color: rgba(5,112,232,.15);
+    text-align: center;
+}
+#errusername, #erremail {
+    float: right;
 }
 input, textarea {
     border: 1px solid rgba(255,166,30,.7);
@@ -187,6 +192,7 @@ input.valid, textarea.valid {
     background-color: rgba(5,112,232,.1);
 }
 .table-logged th{
+    text-align: center;
     background: -webkit-linear-gradient(top, rgba(5,112,232,.8), rgba(188,211,236,.5)); /* For Safari 5.1 to 6.0 */
     background: -o-linear-gradient(top, rgba(5,112,232,.8), rgba(188,211,236,.5)); /* For Opera 11.1 to 12.0 */
     background: -moz-linear-gradient(top, rgba(5,112,232,.8), rgba(188,211,236,.5)); /* For Firefox 3.6 to 15 */
