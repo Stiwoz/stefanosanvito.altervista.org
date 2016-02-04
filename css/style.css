@@ -66,7 +66,7 @@ body > .container-fluid {
 a.footer-a {
     color: #fff;
 }
-a.footer-a:hover {
+a.footer-a:hover, a.footer-a:active {
     color: rgb(255,166,30);
     text-decoration: none;
 }
@@ -119,10 +119,8 @@ a.footer-a:hover {
 }
 .table-form-popup{
     border-style: none;
+    border-collapse: collapse;
     background-color: rgba(0,0,0,0);
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
 }
 #regForm label{
     display: inline-block;
@@ -205,10 +203,6 @@ a.table-logged-icon:hover {
     min-height: inherit;
     border-style: none;
     display: block;
-}
-#end{
-    text-align: center;
-    color: green;
 }
 
 /* --------- Scroll Bar --------- */
