@@ -104,51 +104,57 @@
                 <div class="col-md-3 col-sm-1 col-xs-1"></div>
             </div>
             <div class="col-md-7">
-                <table class="table-logged">
-                <?php
-                    $server_name = "localhost";
-                    $username = "stefanosanvito";
-                    $password = "";
-                    $db_name = "my_stefanosanvito";
-                    $db_table ="comments";
+                <div class="comments-wrapper">
+                    <div class="container-fluid">
+                        <h1>Commenti recenti</h1>
+                        <div class="comments scroll-y">
+                            <?php
+                            $server_name = "localhost";
+                            $username = "stefanosanvito";
+                            $password = "";
+                            $db_name = "my_stefanosanvito";
+                            $db_table ="comments";
 
-                    $query = "SELECT * FROM ".$db_table." ORDER BY ID";
+                            $query = "SELECT * FROM ".$db_table." ORDER BY Date DESC";
 
-                    $mysqli = new mysqli($server_name,$username,$password,$db_name);
+                            $mysqli = new mysqli($server_name,$username,$password,$db_name);
 
-                    if (mysqli_connect_errno()) {
-                        die("Can't connect to database: " . mysqli_connect_error());
-                        exit();
-                    }
+                            if (mysqli_connect_errno()) {
+                                die("Can't connect to database: " . mysqli_connect_error());
+                                exit();
+                            }
 
-                    $result = $mysqli->query($query);
-                    if (!$result) {
-                        die("Query to show fields from table failed");
-                        exit();
-                    }
+                            $result = $mysqli->query($query);
+                            if (!$result) {
+                                die("Query to show fields from table failed");
+                                exit();
+                            }
 
-                    echo "<tr>";
-                        echo"<th>Username</th>";
-                        echo"<th>E-Mail</th>";
-                        echo"<th>Data</th>";
-                        echo"<th>Commento</th>";
-                    echo "</tr>";
+                            while($row = $result->fetch_assoc()){
+                                echo "<div class='comment-info'>";
+                                    echo "<div class='row'>";
+                                        echo "<div class='col-md-3 col-sm-3 col-xs-3'>";
+                                            echo "<p class='text-center'>";
+                                                echo ($row['Anonimous'] ? '<em>Anonimo</em>' : $row['Username'])."<br/>".($row['Anonimous'] ? '' : $row['E-Mail']);
+                                            echo "</p>";
+                                        echo "</div>";
+                                        echo "<div class='col-md-7 col-sm-7 col-xs-7'></div>";
+                                        echo "<div class='col-md-2 col-sm-2 col-xs-2'>";
+                                            echo "<p class='text-center'>".$row['Date']."</p>";
+                                        echo "</div>";
+                                    echo "</div>";
+                                    echo "<div class='comment-text'>";
+                                        echo "<p class='text-justify'>".$row['Comment']."</p>";
+                                    echo "</div>";
+                                echo "</div>";
+                                echo "<div class='divider'></div>";
+                            }
 
-                    while($row = $result->fetch_assoc()){
-                        echo "<tr>";
-                            echo "<td>";
-                                echo ($row['Anonimous'] ? 'Anonimo' : $row['Username']);
-                            echo "</td>";
-                            echo "<td>";
-                                echo ($row['Anonimous'] ? '-' : $row['E-Mail']);
-                            echo "</td>";
-                            echo "<td>".$row['Date']."</td>";
-                            echo "<td>".$row['Comment']."</td>";
-                        echo "</tr>";
-                    }
-                    $mysqli->close();
-                ?>
-                </table>
+                            $mysqli->close();
+                            ?>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

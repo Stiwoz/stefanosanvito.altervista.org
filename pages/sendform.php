@@ -4,8 +4,10 @@
     $user = trim($_GET["username"]);
     $email = trim($_GET["email"]);
     $anon = trim($_GET["anon"]);
-    $date = trim($_GET["date"]);
     $comment = trim($_GET["comment"]);
+
+    $date = new DateTime();
+    $date->format('d/m/Y H:i:s');
 
     $server_name = "localhost";
     $db_username = "stefanosanvito";
@@ -22,7 +24,7 @@
     if (!$conn)
         die("Can't connect to database");
 
-    $sql = "INSERT INTO {$db_table} (`ID`, `Username`, `E-Mail`, `Date`, `Anonimous`, `Comment`) VALUE (NULL, '$user', '$email', CURRENT_DATE, '$anon', '$comment')";
+    $sql = "INSERT INTO {$db_table} (`ID`, `Username`, `E-Mail`, `Date`, `Anonimous`, `Comment`) VALUE (NULL, '$user', '$email', '$date', '$anon', '$comment')";
 
     $result = mysqli_query($conn, $sql);
     if (!$result)
