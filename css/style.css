@@ -9,15 +9,20 @@ html {
 }
 body{
     background-color: transparent;
+    margin: 70px 10px 67px 10px;
+    overflow: hidden;
 }
 a {
     transition: all .5s ease;
 }
 body > .container-fluid {
-    margin: 70px 10px 5px 10px;
+    padding: 0;
     background-color: rgba(188,211,236,.8);
-    min-height: 882px;
+    height: 100%;
     overflow-y: auto;
+}
+.row {
+    margin: 0;
 }
 .navbar-fixed-top {
     font-size: 22px;
@@ -33,6 +38,7 @@ body > .container-fluid {
     padding-right: 25px;
 }
 .footer {
+    left: 0;
     bottom: 7px;
     width: 100%;
     position: fixed;
@@ -72,11 +78,14 @@ a.footer-a:hover, a.footer-a:active {
     color: rgb(255,166,30);
     text-decoration: none;
 }
+.no-scroll {
+    overflow: hidden !important;
+}
 .scroll-y {
-    overflow-y: auto;
+    overflow-y: auto !important;
 }
 .scroll-x {
-    overflow-x: auto;
+    overflow-x: auto !important;
 }
 .button-confirm {
     background: rgba(188,211,236,.5) url(../img/tick.png) no-repeat scroll 5px center;
@@ -125,7 +134,6 @@ a.footer-a:hover, a.footer-a:active {
 .hresize {
     resize: horizontal;
 }
-/* --------- Form Page --------- */
 .comments-wrapper {
     background-color: rgba(5,112,232,.2);
     border-radius: 15px;
@@ -134,13 +142,12 @@ a.footer-a:hover, a.footer-a:active {
 .comment-info {
     background-color: rgba(188,211,236,.5);
     border-radius: 15px;
-    border-top: 8px transparent solid;
+    padding-top: 8px;
     padding-left: 15px;
     padding-right: 15px;
     font-size: 12pt;
     font-family: 'Merriweather', serif;
     font-weight: 900;
-
 }
 .comment-text {
     background-color: rgba(188,211,236,.8);
@@ -155,7 +162,7 @@ a.footer-a:hover, a.footer-a:active {
 .comment-form{
     margin-top: 35px;
     border-radius: 14px;
-    border: 10px transparent solid;
+    padding: 10px;
     background-color: rgba(5,112,232,.2);
     font-size: 12pt;
 }
@@ -237,7 +244,7 @@ a.table-logged-icon:hover {
 /* --------- IDs --------- */
 #pdfReader{
     width: 100%;
-    min-height: inherit;
+    height: 100%;
     border-style: none;
     display: block;
 }

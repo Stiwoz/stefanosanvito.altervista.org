@@ -107,7 +107,7 @@
                 <div class="comments-wrapper">
                     <div class="container-fluid">
                         <h1>Commenti recenti</h1>
-                        <div class="comments scroll-y">
+                        <div class="comments">
                             <?php
                             $server_name = "localhost";
                             $username = "stefanosanvito";
@@ -138,8 +138,8 @@
                                                 echo ($row['Anonimous'] ? '<em>Anonimo</em>' : $row['Username'])."<br/>".($row['Anonimous'] ? '' : $row['E-Mail']);
                                             echo "</p>";
                                         echo "</div>";
-                                        echo "<div class='col-md-7 col-sm-7 col-xs-7'></div>";
-                                        echo "<div class='col-md-2 col-sm-2 col-xs-2'>";
+                                        echo "<div class='col-md-7 col-sm-6 col-xs-4'></div>";
+                                        echo "<div class='col-md-2 col-sm-3 col-xs-5'>";
                                             echo "<p class='text-center'>".$row['Date']."</p>";
                                         echo "</div>";
                                     echo "</div>";
@@ -163,7 +163,7 @@
     <div class="footer">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-2 col-xs-12">
+                <div class="col-md-2 hidden-xs hidden-sm">
                     <div class="row info">
                         <div class="col-md-12 col-xs-5">Stefano Sanvito</div>
                         <div class="col-md-12 col-xs-3">s.stefano.sanvito@gmail.com</div>
