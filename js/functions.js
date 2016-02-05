@@ -11,7 +11,7 @@ $(document).ready(function() {
 					var is_name=input.val();
 					if(is_name){
                         input.removeClass("invalid").addClass("valid");
-                        $('#errname').removeClass("error_show").addClass("error");
+                        $('#errusername').removeClass("error_show").addClass("error");
                     }
 					else{
                         input.removeClass("valid").addClass("invalid");
