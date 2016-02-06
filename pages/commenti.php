@@ -74,7 +74,7 @@
                                 </div>
                                 <textarea class="form-control vresize" name="comment" id="comment" rows="3" placeholder="Scrivi il tuo commento qui..."></textarea>
                             </div>
-                            <div class="divider"></div>
+                            <div class="divider-2px"></div>
                             <strong>Autorizzo il trattamento dei miei dati personali ai sensi del <a href="http://www.camera.it/parlam/leggi/deleghe/03196dl.htm">D.lgs. 196 del 30 giugno 2003</a></strong>
                             <div class="text-center">
                                 <div class="center-block">
@@ -92,7 +92,7 @@
                                     </div>
                                 </div>
                                 <span id="errprivacy" class="error">Acconsentire per la registrazione</span>
-                                <div class="divider"></div>
+                                <div class="divider-2px"></div>
                                 <div class="center-block">
                                     <button type="submit" class="button-confirm">Conferma</button>
                                     <button type="reset" class="button-cancel">Cancella</button>
@@ -147,7 +147,6 @@
                                         echo "<p class='text-justify'>".$row['Comment']."</p>";
                                     echo "</div>";
                                 echo "</div>";
-                                echo "<div class='divider'></div>";
                             }
 
                             $mysqli->close();
@@ -165,8 +164,8 @@
             <div class="row">
                 <div class="col-md-2 hidden-xs hidden-sm">
                     <div class="row info">
-                        <div class="col-md-12 col-xs-5">Stefano Sanvito</div>
-                        <div class="col-md-12 col-xs-3">s.stefano.sanvito@gmail.com</div>
+                        <div class="col-md-12">Stefano Sanvito</div>
+                        <div class="col-md-12">s.stefano.sanvito@gmail.com</div>
                     </div>
                 </div>
                 <div class="col-md-3"></div>

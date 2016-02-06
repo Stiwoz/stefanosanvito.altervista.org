@@ -4,22 +4,27 @@
 @import url(https://fonts.googleapis.com/css?family=Merriweather:400,400italic,900,900italic);
 
 html {
-    background: url(../img/bg.png) no-repeat center center fixed;
+    background: url(../img/bg.png) no-repeat center fixed;
     background-size: cover;
+    height: 100%;
 }
 body{
     background-color: transparent;
-    margin: 70px 10px 67px 10px;
     overflow: hidden;
+    padding: 70px 10px 67px 10px;
+    height: 100%;
 }
 a {
     transition: all .5s ease;
 }
 body > .container-fluid {
     padding: 0;
+}
+.container-main {
     background-color: rgba(188,211,236,.8);
-    height: 100%;
     overflow-y: auto;
+    height: 100%;
+    width: auto;
 }
 .row {
     margin: 0;
@@ -64,7 +69,7 @@ body > .container-fluid {
     width: 40px;
 }
 .info{
-    margin-top: 2px;
+    padding-top: 2px;
     color: #fff;
     font-style: italic;
     font-family: 'Playfair Display', serif;
@@ -120,13 +125,18 @@ a.footer-a:hover, a.footer-a:active {
     position:relative;
     display:inline-block;
 }
-.divider {
-    height: 1px;
-    width:100%;
+.divider-1px, .divider-2px {
+    width: 100%;
     display:block; /* for use on default inline elements like span */
     margin: 9px 0;
     overflow: hidden;
-    background-color: rgba(5,112,232,.4);
+    background-color: rgba(5,112,232,.5);
+}
+.divider-1px {
+    height: 1px;
+}
+.divider-2px {
+    height: 2px;
 }
 .vresize{
     resize: vertical;
@@ -135,7 +145,7 @@ a.footer-a:hover, a.footer-a:active {
     resize: horizontal;
 }
 .comments-wrapper {
-    background-color: rgba(5,112,232,.2);
+    background-color: rgba(5,112,232,.3);
     border-radius: 15px;
     margin-top: 35px;
 }
@@ -148,6 +158,8 @@ a.footer-a:hover, a.footer-a:active {
     font-size: 12pt;
     font-family: 'Merriweather', serif;
     font-weight: 900;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 .comment-text {
     background-color: rgba(188,211,236,.8);
@@ -163,11 +175,11 @@ a.footer-a:hover, a.footer-a:active {
     margin-top: 35px;
     border-radius: 14px;
     padding: 10px;
-    background-color: rgba(5,112,232,.2);
+    background-color: rgba(5,112,232,.3);
     font-size: 12pt;
 }
 .anonInfo {
-    padding-left: 10px;
+    margin-left: 10px;
 }
 .charNumb {
     float: right;
