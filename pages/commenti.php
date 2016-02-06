@@ -178,7 +178,7 @@
                     </ul>
                 </div>
                 <div class="col-md-1 col-xs-4">
-                    <a class="footer-a" id="flag" href="../eng/index.html"><img src="../img/engIconSmall.png"/></a>
+                    <a class="footer-a" id="flag" href="../eng/pages/commenti.php"><img src="../img/engIconSmall.png"/></a>
                 </div>
             </div>
         </div>

@@ -106,7 +106,7 @@
             <div class="col-md-7">
                 <div class="comments-wrapper">
                     <div class="container-fluid">
-                        <h1>Commenti recenti</h1>
+                        <h1>Recent comments</h1>
                         <div class="comments">
                             <?php
                             $server_name = "localhost";
