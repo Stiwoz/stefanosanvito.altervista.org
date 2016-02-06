@@ -147,7 +147,11 @@ a.footer-a:hover, a.footer-a:active {
 .comments-wrapper {
     background-color: rgba(5,112,232,.3);
     border-radius: 15px;
-    margin-top: 35px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    -webkit-box-shadow: 2px 4px 10px 1px rgba(0,0,0,.5);
+    -moz-box-shadow: 2px 4px 10px 1px rgba(0,0,0,.5);
+    box-shadow: 2px 4px 10px 1px rgba(0,0,0,.5);
 }
 .comment-info {
     background-color: rgba(188,211,236,.5);
@@ -177,6 +181,9 @@ a.footer-a:hover, a.footer-a:active {
     padding: 10px;
     background-color: rgba(5,112,232,.3);
     font-size: 12pt;
+    -webkit-box-shadow: 2px 4px 10px 1px rgba(0,0,0,.5);
+    -moz-box-shadow: 2px 4px 10px 1px rgba(0,0,0,.5);
+    box-shadow: 2px 4px 10px 1px rgba(0,0,0,.5);
 }
 .anonInfo {
     margin-left: 10px;
