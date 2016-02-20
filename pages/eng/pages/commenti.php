@@ -7,10 +7,10 @@
     <meta name="author" content="Sanvito Stefano"/>
     <meta name="description" content="School Finals Website Project"/>
 
-    <link rel="stylesheet" href="../../css/custom-theme-bootstrap.css"/>
-    <link rel="stylesheet" href="../../css/font-awesome-4.4.0/css/font-awesome.css"/>
-    <link rel="stylesheet" type="text/css" href="../../js/sweetalert2-master/dist/sweetalert2.css"/>
-    <link rel="stylesheet" href="../../css/style.css"/>
+    <link rel="stylesheet" href="../../../css/custom-theme-bootstrap.css"/>
+    <link rel="stylesheet" href="../../../css/font-awesome-4.4.0/css/font-awesome.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../js/sweetalert2-master/dist/sweetalert2.css"/>
+    <link rel="stylesheet" href="../../../css/style.css"/>
 
     <title>Sanvito Stefano's Website</title>
 </head>
@@ -25,7 +25,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="../index.html"><img class="navbar-brand" alt="Level Up!" src="../../img/logo.png"/></a>
+                <a class="navbar-brand" href="../index.html"><img class="navbar-brand" alt="Level Up!" src="../../../img/logo.png"/></a>
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-right navbar-ul">
@@ -45,7 +45,7 @@
                 <div class="row">
                     <div class="col-md-2 col-sm-1 col-xs-1"></div>
                     <div class="col-md-7 col-sm-10 col-xs-10">
-                        <form class="comment-form" id="commForm" name="commForm" method="get" action="../../pages/sendform.php">
+                        <form class="comment-form" id="commForm" name="commForm" method="get" action="../../queries/sendform.php">
                             <h1>Leave a Comment</h1>
                             <div class="form-group">
                                 <div class="row">
@@ -63,7 +63,7 @@
                             </div>
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox" class="valid" id="anon" name="anon" value="yes"/><strong>Anonymous</strong> <a href="#" class="anonInfo" data-toggle="tooltip" data-placement="right" title="The E-Mail Address is omitted and the Username is replaced with 'Anonymous'"><img src="../../img/question-mark-orange.png"/></a>
+                                    <input type="checkbox" class="valid" id="anon" name="anon" value="yes"/><strong>Anonymous</strong> <a href="#" class="anonInfo" data-toggle="tooltip" data-placement="right" title="The E-Mail Address is omitted and the Username is replaced with 'Anonymous'"><img src="../../../img/question-mark-orange.png"/></a>
                                 </label>
                             </div>
                             <div class="form-group">
@@ -121,13 +121,11 @@
 
                             if (mysqli_connect_errno()) {
                                 die("Can't connect to database: " . mysqli_connect_error());
-                                exit();
                             }
 
                             $result = $mysqli->query($query);
                             if (!$result) {
                                 die("Query to show fields from table failed");
-                                exit();
                             }
 
                             while($row = $result->fetch_assoc()){
@@ -178,16 +176,16 @@
                     </ul>
                 </div>
                 <div class="col-md-1 col-xs-4">
-                    <a class="footer-a" id="flag" href="../../pages/commenti.php"><img src="../../img/italyIconSmall.png"/></a>
+                    <a class="footer-a" id="flag" href="../../commenti.php"><img src="../../../img/italyIconSmall.png"/></a>
                 </div>
             </div>
         </div>
     </div>
 
     <!--- --- --- Scripts & Plug-Ins --- --- --->
-    <script src="../../js/jquery-1.11.3.min.js"></script>
-    <script src="../../bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
-    <script src="../../js/sweetalert2-master/dist/sweetalert2.min.js"></script>
-    <script src="../../js/functions.js"></script>
+    <script src="../../../js/jquery-1.11.3.min.js"></script>
+    <script src="../../../bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
+    <script src="../../../js/sweetalert2-master/dist/sweetalert2.min.js"></script>
+    <script src="../../../js/functions.js"></script>
 </body>
 </html>

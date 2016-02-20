@@ -45,7 +45,7 @@
                 <div class="row">
                     <div class="col-md-2 col-sm-1 col-xs-1"></div>
                     <div class="col-md-7 col-sm-10 col-xs-10">
-                        <form class="comment-form" id="commForm" name="commForm" method="get" action="sendform.php">
+                        <form class="comment-form" id="commForm" name="commForm" method="get" action="queries/sendform.php">
                             <h1>Lascia un Commento</h1>
                             <div class="form-group">
                                 <div class="row">
@@ -121,13 +121,11 @@
 
                             if (mysqli_connect_errno()) {
                                 die("Can't connect to database: " . mysqli_connect_error());
-                                exit();
                             }
 
                             $result = $mysqli->query($query);
                             if (!$result) {
                                 die("Query to show fields from table failed");
-                                exit();
                             }
 
                             while($row = $result->fetch_assoc()){
@@ -178,7 +176,7 @@
                     </ul>
                 </div>
                 <div class="col-md-1 col-xs-4">
-                    <a class="footer-a" id="flag" href="../eng/pages/commenti.php"><img src="../img/engIconSmall.png"/></a>
+                    <a class="footer-a" id="flag" href="eng/pages/commenti.php"><img src="../img/engIconSmall.png"/></a>
                 </div>
             </div>
         </div>
