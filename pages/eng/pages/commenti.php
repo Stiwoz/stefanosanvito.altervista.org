@@ -109,15 +109,9 @@
                         <h1>Recent comments</h1>
                         <div class="comments">
                             <?php
-                            $server_name = "localhost";
-                            $username = "stefanosanvito";
-                            $password = "";
-                            $db_name = "my_stefanosanvito";
-                            $db_table ="comments";
+                            include "../../../includes/connect.php";
 
                             $query = "SELECT * FROM ".$db_table." ORDER BY Date DESC";
-
-                            $mysqli = new mysqli($server_name,$username,$password,$db_name);
 
                             if (mysqli_connect_errno()) {
                                 die("Can't connect to database: " . mysqli_connect_error());
