@@ -108,10 +108,11 @@ $(document).ready(function() {
                 document.commForm.reset();
             });
 });
+/*
 function deleteRow(n) {
     $.ajax({
         type: 'GET',
-        url: 'deleteRow.php?n='+n,           
+        url: 'deleteRow.php?n='+n,
         success: function()
                   {
                     swal({title: "Utente Eliminato",
@@ -121,13 +122,13 @@ function deleteRow(n) {
                             confirmButtonText: "OK",
                             closeOnConfirm: false,
                         }, function(){$(location).attr('href','../pages/login.php');});
-                  }           
+                  }
        });
 }
 function editRow(n) {
     swal({title: "Modifica Dati",
           html: "<div class='container'><table class='table-form-popup'><tr><td><label for='name'>Nome:</label></td><td><input type='text' id='name' name='name' placeholder='Nome'/></td><td></td></tr><tr><td></td><td><span id='errname' class='error'>Campo Obbligatorio<br/></span></td></tr><tr><td><label for='surname'>Cognome:</label></td><td><input type='text' id='surname' name='surname' placeholder='Cognome'/></td><td></td></tr><tr><td></td><td><span id='errsurname' class='error'>Campo Obbligatorio<br/></span></td></tr><tr><td><label for='email'>E-Mail:</label></td><td><input type='text' id='email' name='email' placeholder='indirizzo@email.com'/></td><td></td></tr><tr><td></td><td><span id='erremail' class='error'>Inserire un indirizzo valido<br/></span></td></tr><tr><td><label for='date'>Data di Nascita:</label></td><td><input type='date' id='date' name='date' max='2018-01-01' min='1899-12-31'/></td><td></td></tr><tr><td></td><td><span id='errdate' class='error'>Inserire una data valida<br/></span></td></tr></table></div>",
-          type: "warning",       
+          type: "warning",
           showCancelButton: true,
           confirmButtonColor: "rgb(5,112,232)",
           cancelButtonColor: "rgb(188,211,236)",
@@ -138,7 +139,7 @@ function editRow(n) {
           showLoaderOnConfirm: true
                         },
                       function(isConfirm){
-                                if (isConfirm) { 
+                                if (isConfirm) {
                                     var name = $("#editname").val();
                                     var surname = $("#editsurname").val();
                                     var email = $("#editemail").val();
@@ -146,16 +147,16 @@ function editRow(n) {
                                     setTimeout(function(){swal("Utente Registrato");}, 2000);
                                     $.ajax({
                                             type: 'GET',
-                                            url: 'editRow.php?ID='+n+'&name='+name+'&surname='+surname+'&email='+email+'&date='+date,           
+                                            url: 'editRow.php?ID='+n+'&name='+name+'&surname='+surname+'&email='+email+'&date='+date,
                                             success: function() {
                                                 $(location).attr('href','../pages/login.php');
-                                            }           
+                                            }
                                     });
-                                    
+
                                 } else {
                                     swal("Modifica Annullata", "Utente non modificato", "error");
                                 }
                         });
-    
-}
 
+}
+*/
