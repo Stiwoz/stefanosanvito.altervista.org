@@ -43,66 +43,60 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-5">
-                    <div class="row">
-                        <div class="col-md-2 col-sm-1 col-xs-1"></div>
-                        <div class="col-md-7 col-sm-10 col-xs-10">
-                            <form class="comment-form" id="commForm" name="commForm" method="get" action="queries/sendform.php">
-                                <h1>Lascia un Commento</h1>
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-xs-12 col-md-6"><label for="username">Username</label></div>
-                                        <div class="col-xs-12 col-md-6"><span id="errusername" class="error">Campo obbligatorio</span></div>
-                                    </div>
-                                    <input type="text" class="form-control" name="username" id="username" placeholder="Username"/>
-                                </div>
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-xs-12 col-md-6"><label for="email">Indirizzo E-Mail</label></div>
-                                        <div class="col-xs-12 col-md-6"><span id="erremail" class="error">Inserire un indirizzo valido</span></div>
-                                    </div>
-                                    <input type="text" class="form-control" name="email" id="email" placeholder="indirizzo@email.com"/>
-                                </div>
-                                <div class="checkbox">
+                    <form class="comment-form" id="commForm" name="commForm" method="get" action="queries/sendform.php">
+                        <h1>Lascia un Commento</h1>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-xs-12 col-md-6"><label for="username">Username</label></div>
+                                <div class="col-xs-12 col-md-6"><span id="errusername" class="error">Campo obbligatorio</span></div>
+                            </div>
+                            <input type="text" class="form-control" name="username" id="username" placeholder="Username"/>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-xs-12 col-md-6"><label for="email">Indirizzo E-Mail</label></div>
+                                <div class="col-xs-12 col-md-6"><span id="erremail" class="error">Inserire un indirizzo valido</span></div>
+                            </div>
+                            <input type="text" class="form-control" name="email" id="email" placeholder="indirizzo@email.com"/>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" class="valid" id="anon" name="anon" value="yes"/><strong>Anonimo</strong> <a href="#" class="anonInfo" data-toggle="tooltip" data-placement="right" title="L'indirizzo E-Mail viene omesso e l'Username viene sostituito con 'Anonimo'"><img src="../img/question-mark-orange.png"/></a>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-2 col-xs-8"><label for="email">Commento</label></div>
+                                <div class="col-md-1 col-md-push-9 col-xs-4"><span class="charNumb">500</span></div>
+                                <div class="col-md-9 col-xs-12"><span id="errcomment" class="error center-block">Numero di caratteri non valido</span></div>
+                            </div>
+                            <textarea class="form-control vresize" name="comment" id="comment" rows="3" placeholder="Scrivi il tuo commento qui..."></textarea>
+                        </div>
+                        <div class="divider-2px"></div>
+                        <strong>Autorizzo il trattamento dei miei dati personali ai sensi del <a href="http://www.camera.it/parlam/leggi/deleghe/03196dl.htm">D.lgs. 196 del 30 giugno 2003</a></strong>
+                        <div class="text-center">
+                            <div class="center-block">
+                                <div class="radio-inline">
                                     <label>
-                                        <input type="checkbox" class="valid" id="anon" name="anon" value="yes"/><strong>Anonimo</strong> <a href="#" class="anonInfo" data-toggle="tooltip" data-placement="right" title="L'indirizzo E-Mail viene omesso e l'Username viene sostituito con 'Anonimo'"><img src="../img/question-mark-orange.png"/></a>
+                                        <input type="radio" name="privacy" id="privacy" value="yes"/>
+                                        Acconsento
                                     </label>
                                 </div>
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-md-2 col-xs-8"><label for="email">Commento</label></div>
-                                        <div class="col-md-1 col-md-push-9 col-xs-4"><span class="charNumb">500</span></div>
-                                        <div class="col-md-9 col-xs-12"><span id="errcomment" class="error center-block">Numero di caratteri non valido</span></div>
-                                    </div>
-                                    <textarea class="form-control vresize" name="comment" id="comment" rows="3" placeholder="Scrivi il tuo commento qui..."></textarea>
+                                <div class="radio-inline">
+                                    <label>
+                                        <input type="radio" name="privacy" id="privacy" value="no" checked/>
+                                        Non Acconsento
+                                    </label>
                                 </div>
-                                <div class="divider-2px"></div>
-                                <strong>Autorizzo il trattamento dei miei dati personali ai sensi del <a href="http://www.camera.it/parlam/leggi/deleghe/03196dl.htm">D.lgs. 196 del 30 giugno 2003</a></strong>
-                                <div class="text-center">
-                                    <div class="center-block">
-                                        <div class="radio-inline">
-                                            <label>
-                                                <input type="radio" name="privacy" id="privacy" value="yes"/>
-                                                Acconsento
-                                            </label>
-                                        </div>
-                                        <div class="radio-inline">
-                                            <label>
-                                                <input type="radio" name="privacy" id="privacy" value="no" checked/>
-                                                Non Acconsento
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <span id="errprivacy" class="error">Acconsentire per la registrazione</span>
-                                    <div class="divider-2px"></div>
-                                    <div class="center-block">
-                                        <button type="submit" class="button-confirm">Conferma</button>
-                                        <button type="reset" class="button-cancel">Cancella</button>
-                                    </div>
-                                </div>
-                            </form>
+                            </div>
+                            <span id="errprivacy" class="error">Acconsentire per la registrazione</span>
+                            <div class="divider-2px"></div>
+                            <div class="center-block">
+                                <button type="submit" class="button-confirm">Conferma</button>
+                                <button type="reset" class="button-cancel">Cancella</button>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-3 col-sm-1 col-xs-1"></div>
+                    </form>
                 </div>
                 <div class="col-md-7">
                     <div class="comments-wrapper">
@@ -121,15 +115,16 @@
                                 while($row = $result->fetch_assoc()){
                                     echo "<div class='comment-info'>";
                                         echo "<div class='row'>";
-                                            echo "<div class='col-md-3 col-sm-3 col-xs-3'>";
+                                            echo "<div class='col-md-3 col-sm-3 col-xs-5'>";
                                                 echo "<p class='text-center'>";
                                                     echo ($row['Anonimous'] ? '<em>Anonimo</em>' : $row['Username'])."<br/>".($row['Anonimous'] ? '' : $row['E-Mail']);
                                                 echo "</p>";
                                             echo "</div>";
-                                            echo "<div class='col-md-7 col-sm-6 col-xs-4'></div>";
-                                            echo "<div class='col-md-2 col-sm-3 col-xs-5'>";
+                                            echo "<div class='col-md-6 col-sm-6 hidden-xs'></div>";
+                                            echo "<div class='col-md-3 col-sm-3 col-xs-7'>";
                                                 echo "<p class='text-center'>".$row['Date']."</p>";
                                             echo "</div>";
+                                            echo "<div class='clearfix'></div>";
                                         echo "</div>";
                                         echo "<div class='comment-text'>";
                                             echo "<p class='text-justify'>".$row['Comment']."</p>";
