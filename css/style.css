@@ -23,6 +23,10 @@ a {
     -ms-transition: all .5s ease;
     transition: all .5s ease;
 }
+h1 {
+    font-family: 'Merriweather', serif;
+    font-weight: 400;
+}
 .page-wrapper > .container-fluid {
     padding: 0;
     background-color: rgba(188,211,236,.8);
@@ -42,6 +46,10 @@ a {
 }
 .navbar-fixed-top {
     font-size: 22px;
+}
+.navbar-toggle {
+    font-size: 26px;
+    border: rgba(255,255,255,.3) solid 1px;
 }
 .navbar-brand > img {
     height: 55px;
@@ -179,8 +187,8 @@ textarea.hresize {
 .comments-wrapper {
     background-color: rgba(5,112,232,.3);
     border-radius: 15px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 15px;
+    margin-bottom: 15px;
     -webkit-box-shadow: 2px 4px 10px 1px rgba(0,0,0,.5);
     -moz-box-shadow: 2px 4px 10px 1px rgba(0,0,0,.5);
     box-shadow: 2px 4px 10px 1px rgba(0,0,0,.5);
@@ -208,7 +216,7 @@ textarea.hresize {
     font-weight: 400;
 }
 .comment-form{
-    margin-top: 35px;
+    margin-top: 15px;
     border-radius: 14px;
     padding: 10px;
     background-color: rgba(5,112,232,.3);

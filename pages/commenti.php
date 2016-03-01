@@ -113,6 +113,9 @@
                                 }
 
                                 while($row = $result->fetch_assoc()){
+
+                                    $Date = date("d/m/Y", strtotime($row['Date']));
+
                                     echo "<div class='comment-info'>";
                                         echo "<div class='row'>";
                                             echo "<div class='col-md-3 col-sm-3 col-xs-5'>";
@@ -122,7 +125,7 @@
                                             echo "</div>";
                                             echo "<div class='col-md-6 col-sm-6 hidden-xs'></div>";
                                             echo "<div class='col-md-3 col-sm-3 col-xs-7'>";
-                                                echo "<p class='text-center'>".$row['Date']."</p>";
+                                                echo "<p class='text-center'>".$Date."</p>";
                                             echo "</div>";
                                             echo "<div class='clearfix'></div>";
                                         echo "</div>";
