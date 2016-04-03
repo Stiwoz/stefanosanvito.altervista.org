@@ -89,10 +89,10 @@ $(document).ready(function() {
                         },
                       function(isConfirm){
                                 if (isConfirm) { 
-                                    setTimeout(function(){swal("Utente Registrato");}, 2000);
+                                    setTimeout(function(){swal("Commento Registrato");}, 2000);
                                     $('#commForm').submit();
                                 } else {
-                                    swal("Registrazione Annullata", "Utente non registrato", "error");
+                                    swal("Registrazione Annullata", "Commento non registrato", "error");
                                 }
                         });
 				    }
