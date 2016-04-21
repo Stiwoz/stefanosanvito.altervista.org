@@ -164,7 +164,7 @@
                         </ul>
                     </div>
                     <div class="col-md-1 col-xs-4">
-                        <a class="footer-a" id="flag" href="../../commenti.php"><img src="../../../img/engIconSmall.png"/></a>
+                        <a class="footer-a" id="flag" href="../../commenti.php"><img src="../../../img/italyIconSmall.png"/></a>
                     </div>
                 </div>
             </div>
