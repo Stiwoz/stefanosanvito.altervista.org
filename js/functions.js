@@ -11,11 +11,11 @@ $(document).ready(function() {
 					var is_name=input.val();
 					if(is_name){
                         input.removeClass("invalid").addClass("valid");
-                        $('#errusername').removeClass("error_show").addClass("error");
+                        $('#usernameerr').removeClass("error_show").addClass("error");
                     }
 					else{
                         input.removeClass("valid").addClass("invalid");
-                        $('#errusername').removeClass("error").addClass("error_show");
+                        $('#usernameerr').removeClass("error").addClass("error_show");
                     }
 				});
 
@@ -28,12 +28,12 @@ $(document).ready(function() {
                     if(chars <= maxChars && chars !== 0){
                         input.removeClass("invalid").addClass("valid");
                         $('.charNumb').removeClass("errorChars");
-                        $('#errcomment').removeClass("error_show").addClass("error");
+                        $('#commenterr').removeClass("error_show").addClass("error");
                     }
                     else{
                         input.removeClass("valid").addClass("invalid");
                         $('.charNumb').addClass("errorChars");
-                        $('#errcomment').removeClass("error").addClass("error_show");
+                        $('#commenterr').removeClass("error").addClass("error_show");
                     }
                  });
 
@@ -44,58 +44,83 @@ $(document).ready(function() {
 					var is_email=re.test(input.val());
 					if(is_email){
                         input.removeClass("invalid").addClass("valid");
-                        $('#erremail').removeClass("error_show").addClass("error");
+                        $('#emailerr').removeClass("error_show").addClass("error");
                     }
 					else{
                         input.removeClass("valid").addClass("invalid");
-                        $('#erremail').removeClass("error").addClass("error_show");
+                        $('#emailerr').removeClass("error").addClass("error_show");
                     }
 				});
 
                 // Acconsento must be checked
                 $("input:radio[name='privacy']").change(function () {
                     if ($("input:radio[name='privacy'][value='yes']").is(":checked")) { 
-                        $('#errprivacy').removeClass("error_show").addClass("error");
+                        $('#privacyerr').removeClass("error_show").addClass("error");
                         $("input:radio[name=privacy]").removeClass("invalid").addClass("valid");
                     }
                     else { 
-                        $('#errprivacy').removeClass("error").addClass("error_show");
+                        $('#privacyerr').removeClass("error").addClass("error_show");
                         $("input[name='privacy']").removeClass("valid").addClass("invalid");
                     }
                 });
 		
 		//	After Form Submitted Validation
-			$("button.button-confirm").click(function(event){
+			$("#submit").click(function(event){
                 event.preventDefault();
 				var form_data=$("#commForm").serializeArray();
 				var error_free=true;
+                var respCaptcha = grecaptcha.getResponse();
 				for (var input in form_data){
-					var element=$("#"+form_data[input]['name']);
-					var valid=element.hasClass("valid");
-					var error_element=$("#err"+form_data[input]['name']);
-					if (!valid){error_element.removeClass("error").addClass("error_show"); error_free=false;}
-					else{error_element.removeClass("error_show").addClass("error");}
+					if(form_data[input]['name']=="g-recaptcha-response"){
+                        if(!respCaptcha) {
+                            error_free = false;
+                            $(form_data[input]['name']).removeClass("valid").addClass("invalid");
+                        }else {
+                            $(form_data[input]['name']).removeClass("invalid").addClass("valid");
+                        }
+                    } else {
+                        var valid = $(form_data[input]['name']).hasClass("valid");
+                        var error_element = $("#"+form_data[input]['name'] + "err");
+                        if (!valid) {
+                            error_element.removeClass("error").addClass("error_show");
+                            error_free = false;
+                        }
+                        else {
+                            error_element.removeClass("error_show").addClass("error");
+                            error_free = true;
+                        }
+                        alert(error_free + " " + form_data[input]['name']);
+                    }
 				}
+                if(!error_free)
+                    swal("Errore", "Form non correttamente compilato", "error");
 				if (error_free) {
-					swal({title: "Confermare la registrazione?",
-                            text: "Premere Conferma per continuare",
-                            type: "info",
-                            showCancelButton: true,
-                            confirmButtonText: "Conferma",
-                            cancelButtonText: "Annulla",
-                            closeOnConfirm: false,
-                            closeOnCancel: false,
-                            showLoaderOnConfirm: true
-                        },
-                      function(isConfirm){
-                                if (isConfirm) { 
-                                    setTimeout(function(){swal("Commento Registrato");}, 2000);
-                                    $('#commForm').submit();
-                                } else {
-                                    swal("Registrazione Annullata", "Commento non registrato", "error");
-                                }
-                        });
-				    }
+                    swal({
+                        title: "Confermare l'inserimento?",
+                        text: "Premere Conferma per continuare",
+                        type: "info",
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        confirmButtonText: "Conferma",
+                        cancelButtonText: "Annulla",
+                        closeOnConfirm: false,
+                        closeOnCancel: false,
+                        showLoaderOnConfirm: true
+                    }).then(function(isConfirm) {
+                        if (isConfirm) {
+                            if (isConfirm === true) {
+                                setTimeout(function(){swal("Commento Registrato");}, 2000);
+                                $('#commForm').submit();
+                            } else if (isConfirm === false) {
+                                swal("Registrazione Annullata", "Commento non registrato", "error");
+                            }
+                            else {
+                                // Esc, close button or outside click
+                                // isConfirm is undefined
+                            }
+                        }
+                    });
+				}
 			});
             $("button.button-cancel").click(function(event){
                 event.preventDefault();
@@ -105,6 +130,7 @@ $(document).ready(function() {
                 $('.invalid').removeClass("invalid");
                 $('.valid').removeClass("valid");
                 $('#anon').addClass("valid");
+                grecaptcha.reset();
                 document.commForm.reset();
             });
 });
