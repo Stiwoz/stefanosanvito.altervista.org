@@ -12,6 +12,8 @@
     <link rel="stylesheet" type="text/css" href="../js/sweetalert2-master/dist/sweetalert2.css"/>
     <link rel="stylesheet" href="../css/style.css"/>
 
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+
     <title>Sanvito Stefano's Website</title>
 </head>
 <body>
@@ -43,7 +45,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-5">
-                    <form class="comment-form" id="commForm" name="commForm" method="get" action="queries/sendform.php">
+                    <form class="comment-form" id="commForm" name="commForm" method="get" action="../queries/sendform.php">
                         <h1>Lascia un Commento</h1>
                         <div class="form-group">
                             <div class="row">
@@ -71,6 +73,10 @@
                                 <div class="col-md-9 col-xs-12"><span id="errcomment" class="error center-block">Numero di caratteri non valido</span></div>
                             </div>
                             <textarea class="form-control vresize" name="comment" id="comment" rows="3" placeholder="Scrivi il tuo commento qui..."></textarea>
+                        </div>
+                        <div class="divider-2px"></div>
+                        <div class="text-xs-center">
+                            <div class="g-recaptcha" data-sitekey="6LejbCATAAAAAIP87T7p6i0sXa_j-5gj-lowtgx6"></div>
                         </div>
                         <div class="divider-2px"></div>
                         <strong>Autorizzo il trattamento dei miei dati personali ai sensi del <a href="http://www.camera.it/parlam/leggi/deleghe/03196dl.htm">D.lgs. 196 del 30 giugno 2003</a></strong>

@@ -130,6 +130,9 @@ input.valid, textarea.valid {
 .divider-2px {
     height: 2px;
 }
+.text-xs-center {
+    text-align: center;
+}
 
 /* =============  Navbar  ============= */
 .navbar-fixed-top {
@@ -340,4 +343,13 @@ textarea.hresize {
 a.table-logged-icon:hover {
     text-decoration: none;
     background-color: rgba(0,0,0,0);
+}
+/* already defined in bootstrap4 */
+.g-recaptcha {
+    display: inline-block;
+}
+.comments:hover {
+    -webkit-box-shadow: 2px 4px 10px 1px rgba(0,0,0,.5);
+    -moz-box-shadow: 2px 4px 10px 1px rgba(0,0,0,.5);
+    box-shadow: 2px 4px 10px 1px rgba(0,0,0,.5);
 }
