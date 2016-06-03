@@ -1,5 +1,5 @@
 <?php
-    include "../../includes/connect.php";
+    include "../includes/connect.php";
 
     $user = trim($_GET["username"]);
     $email = trim($_GET["email"]);

@@ -9,10 +9,16 @@
 
     <link rel="stylesheet" href="../css/custom-theme-bootstrap.css"/>
     <link rel="stylesheet" href="../css/font-awesome-4.4.0/css/font-awesome.css"/>
-    <link rel="stylesheet" type="text/css" href="../js/sweetalert2-master/dist/sweetalert2.css"/>
+    <link rel="stylesheet" type="text/css" href="../js/sweetalert2.min.css"/>
     <link rel="stylesheet" href="../css/style.css"/>
 
-    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <!--- --- --- Scripts & Plug-Ins --- --- --->
+    <script src="../js/jquery-1.11.3.min.js"></script>
+    <script src="../bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
+    <script src="../js/sweetalert2.min.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script src="../js/reCaptcha_ajax.js"></script>
+    <script src="../js/functions.js"></script>
 
     <title>Sanvito Stefano's Website</title>
 </head>
@@ -45,19 +51,19 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-5">
-                    <form class="comment-form" id="commForm" name="commForm" method="get" action="../queries/sendform.php">
+                    <form class="comment-form" id="commForm" name="commForm" method="post" action="../queries/sendform.php">
                         <h1>Lascia un Commento</h1>
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-xs-12 col-md-6"><label for="username">Username</label></div>
-                                <div class="col-xs-12 col-md-6"><span id="errusername" class="error">Campo obbligatorio</span></div>
+                                <div class="col-xs-12 col-md-6"><span id="usernameerr" class="error">Campo obbligatorio</span></div>
                             </div>
                             <input type="text" class="form-control" name="username" id="username" placeholder="Username"/>
                         </div>
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-xs-12 col-md-6"><label for="email">Indirizzo E-Mail</label></div>
-                                <div class="col-xs-12 col-md-6"><span id="erremail" class="error">Inserire un indirizzo valido</span></div>
+                                <div class="col-xs-12 col-md-6"><span id="emailerr" class="error">Inserire un indirizzo valido</span></div>
                             </div>
                             <input type="text" class="form-control" name="email" id="email" placeholder="indirizzo@email.com"/>
                         </div>
@@ -70,13 +76,14 @@
                             <div class="row">
                                 <div class="col-md-2 col-xs-8"><label for="email">Commento</label></div>
                                 <div class="col-md-1 col-md-push-9 col-xs-4"><span class="charNumb">500</span></div>
-                                <div class="col-md-9 col-xs-12"><span id="errcomment" class="error center-block">Numero di caratteri non valido</span></div>
+                                <div class="col-md-9 col-xs-12"><span id="commenterr" class="error center-block">Numero di caratteri non valido</span></div>
                             </div>
                             <textarea class="form-control vresize" name="comment" id="comment" rows="3" placeholder="Scrivi il tuo commento qui..."></textarea>
                         </div>
                         <div class="divider-2px"></div>
-                        <div class="text-xs-center">
-                            <div class="g-recaptcha" data-sitekey="6LejbCATAAAAAIP87T7p6i0sXa_j-5gj-lowtgx6"></div>
+                        <div class="text-xs-center captchaContainer">
+                            <div id="recaptcha" class="g-recaptcha" data-sitekey="6LejbCATAAAAAIP87T7p6i0sXa_j-5gj-lowtgx6"></div>
+                            <span id="recaptchaerr" class="error"></span>
                         </div>
                         <div class="divider-2px"></div>
                         <strong>Autorizzo il trattamento dei miei dati personali ai sensi del <a href="http://www.camera.it/parlam/leggi/deleghe/03196dl.htm">D.lgs. 196 del 30 giugno 2003</a></strong>
@@ -95,10 +102,10 @@
                                     </label>
                                 </div>
                             </div>
-                            <span id="errprivacy" class="error">Acconsentire per la registrazione</span>
+                            <span id="privacyerr" class="error">Acconsentire per la registrazione</span>
                             <div class="divider-2px"></div>
                             <div class="center-block">
-                                <button type="submit" class="button-confirm">Conferma</button>
+                                <button id="submit" type="submit" class="button-confirm">Conferma</button>
                                 <button type="reset" class="button-cancel">Cancella</button>
                             </div>
                         </div>
@@ -126,7 +133,7 @@
                                         echo "<div class='row'>";
                                             echo "<div class='col-md-3 col-sm-3 col-xs-5'>";
                                                 echo "<p class='text-center'>";
-                                                    echo ($row['Anonimous'] ? '<em>Anonimo</em>' : $row['Username'])."<br/>".($row['Anonimous'] ? '' : $row['E-Mail']);
+                                                    echo ($row['Anonymous'] ? '<em>Anonimo</em>' : $row['Username'])."<br/>".($row['Anonymous'] ? '' : $row['E-Mail']);
                                                 echo "</p>";
                                             echo "</div>";
                                             echo "<div class='col-md-6 col-sm-6 hidden-xs'></div>";
@@ -176,10 +183,6 @@
             </div>
         </div>
     </div>
-    <!--- --- --- Scripts & Plug-Ins --- --- --->
-    <script src="../js/jquery-1.11.3.min.js"></script>
-    <script src="../bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
-    <script src="../js/sweetalert2-master/dist/sweetalert2.min.js"></script>
-    <script src="../js/functions.js"></script>
+    <script src="../js/sweetalert2.min.js"></script>
 </body>
 </html>

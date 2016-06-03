@@ -348,8 +348,3 @@ a.table-logged-icon:hover {
 .g-recaptcha {
     display: inline-block;
 }
-.comments:hover {
-    -webkit-box-shadow: 2px 4px 10px 1px rgba(0,0,0,.5);
-    -moz-box-shadow: 2px 4px 10px 1px rgba(0,0,0,.5);
-    box-shadow: 2px 4px 10px 1px rgba(0,0,0,.5);
-}

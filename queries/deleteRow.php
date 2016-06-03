@@ -1,5 +1,5 @@
 <?php
-        include "../../includes/connect.php";
+        include "../includes/connect.php";
         $n = trim($_GET['n']);
                 
         $query = "DELETE FROM ".$dbtable." WHERE ID = ".$n;
