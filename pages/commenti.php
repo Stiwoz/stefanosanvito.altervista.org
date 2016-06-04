@@ -17,7 +17,6 @@
     <script src="../bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
     <script src="../js/sweetalert2.min.js"></script>
     <script src="https://www.google.com/recaptcha/api.js"></script>
-    <script src="../js/reCaptcha_ajax.js"></script>
     <script src="../js/functions.js"></script>
 
     <title>Sanvito Stefano's Website</title>
@@ -83,7 +82,7 @@
                         <div class="divider-2px"></div>
                         <div class="text-xs-center captchaContainer">
                             <div id="recaptcha" class="g-recaptcha" data-sitekey="6LejbCATAAAAAIP87T7p6i0sXa_j-5gj-lowtgx6"></div>
-                            <span id="recaptchaerr" class="error"></span>
+                            <br/><span id="g-recaptcha-responseerr" class="error"></span>
                         </div>
                         <div class="divider-2px"></div>
                         <strong>Autorizzo il trattamento dei miei dati personali ai sensi del <a href="http://www.camera.it/parlam/leggi/deleghe/03196dl.htm">D.lgs. 196 del 30 giugno 2003</a></strong>
@@ -110,6 +109,13 @@
                             </div>
                         </div>
                     </form>
+                    <div class="hidden-xs">
+                        <script type="text/javascript">
+                            /* <![CDATA[ */
+                            document.write('<s'+'cript type="text/javascript" src="http://ad.altervista.org/js.ad/size=300X250/?ref='+encodeURIComponent(location.hostname+location.pathname)+'&r='+new Date().getTime()+'"></s'+'cript>');
+                            /* ]]> */
+                        </script>
+                    </div>
                 </div>
                 <div class="col-md-7">
                     <div class="comments-wrapper">
@@ -183,6 +189,5 @@
             </div>
         </div>
     </div>
-    <script src="../js/sweetalert2.min.js"></script>
 </body>
 </html>

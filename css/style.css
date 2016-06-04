@@ -344,7 +344,6 @@ a.table-logged-icon:hover {
     text-decoration: none;
     background-color: rgba(0,0,0,0);
 }
-/* already defined in bootstrap4 */
 .g-recaptcha {
     display: inline-block;
 }

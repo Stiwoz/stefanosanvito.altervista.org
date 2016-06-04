@@ -6,19 +6,22 @@
  * Time: 18:06
  */
 
-$captcha="";
-if(isset($_POST['g-recaptcha-response'])){
-    $captcha = $_POST['g-recaptcha-response'];
-}
-if(!$captcha){
-    die('Please check the the captcha form.');
-}
-$secretKey = "6LejbCATAAAAAOT3Oi5Ibi__29aKrEeEC--Bqfx5";
-$ip = $_SERVER['REMOTE_ADDR'];
-$response=file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".$secretKey."&response=".$captcha."&remoteip=".$ip);
-$responseKeys = json_decode($response,true);
-if(intval($responseKeys["success"]) !== 1) {
-    echo 'Captcha test not successful, reload and retry.';
-} else {
-    echo 'Hello, Human.';
+require_once "../includes/recaptchalib.php";
+
+$secret = "6LejbCATAAAAAOT3Oi5Ibi__29aKrEeEC--Bqfx5";
+$resp = null;
+$error = null;
+$reCaptcha = new ReCaptcha($secret);
+// Was there a reCAPTCHA response?
+if ($_REQUEST["g-recaptcha-response"]) {
+    $resp = $reCaptcha->verifyResponse(
+        $_SERVER["REMOTE_ADDR"],
+        $_REQUEST["g-recaptcha-response"]
+    );
+    if ($resp !== null && $resp->success) {
+        echo 1;
+        exit;
+    } else {
+        exit;
+    }
 }

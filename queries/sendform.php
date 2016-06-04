@@ -1,17 +1,17 @@
 <?php
     include "../includes/connect.php";
 
-    $user = trim($_GET["username"]);
-    $email = trim($_GET["email"]);
-    $anon = trim($_GET["anon"]);
-    $comment = trim($_GET["comment"]);
+    $user = trim($_POST["username"]);
+    $email = trim($_POST["email"]);
+    $anon = trim($_POST["anon"]);
+    $comment = trim($_POST["comment"]);
 
     if($anon == "yes")
         $anon = 1;
     else
         $anon = 0;
 
-    $query = "INSERT INTO {$db_table} (`ID`, `Username`, `E-Mail`, `Date`, `Anonimous`, `Comment`) VALUE (NULL, '$user', '$email', CURRENT_TIMESTAMP, '$anon', '$comment')";
+    $query = "INSERT INTO {$db_table} (`ID`, `Username`, `E-Mail`, `Date`, `Anonimous`, `Comment`) VALUES (NULL, '$user', '$email', CURRENT_TIMESTAMP, '$anon', '$comment')";
 
     $result = $mysqli->query($query);
     if (!$result)
