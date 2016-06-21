@@ -53,6 +53,19 @@ $(document).ready(function() {
                     }
 				});
 
+                //checking if bot
+                $('#city').on('input',function(){
+                    var input=$(this);
+                    var is_name=input.val();
+                    if(is_name){
+                        input.removeClass("valid").addClass("invalid");
+                        $('#cityerr').removeClass("error").addClass("error_show");
+                    }
+                    else{
+                        input.removeClass("invalid").addClass("valid");
+                        $('#cityerr').removeClass("error_show").addClass("error");
+                    }
+                });
                 // Acconsento must be checked
                 $("input:radio[name='privacy']").change(function () {
                     if ($("input:radio[name='privacy'][value='yes']").is(":checked")) { 
@@ -64,24 +77,6 @@ $(document).ready(function() {
                         $("input[name='privacy']").removeClass("valid").addClass("invalid");
                     }
                 });
-
-                function checkCaptcha() {
-                    $.when(grecaptcha.getResponse()).done(function(resp){
-                        console.log(resp);
-                        $.ajax({
-                            method: 'get',
-                            async: 'false',
-                            url: '../queries/reCaptcha.php',
-                            data: 'g-recaptcha-response='+resp,
-                            success: function(result){
-                                console.log(result);
-                                $("#g-recaptcha-responseerr").text(result);
-                                return result;
-                            }
-                        });
-                    });
-
-                }
 		
 		//	After Form Submitted Validation
 			$("#submit").click(function(event){
@@ -89,13 +84,6 @@ $(document).ready(function() {
 				var form_data=$("#commForm").serializeArray();
 				var error_free=true;
 
-                $.when(checkCaptcha()).done(function(result){
-                    if(result == '1'){
-                        $("textarea[name='g-recaptcha-response']").removeClass("invalid").addClass("valid");
-                    }
-                    else{
-                        $("textarea[name='g-recaptcha-response']").removeClass("valid").addClass("invalid");
-                    }
                     jQuery.each(form_data, function(i, field){
                         var input_name= $("#"+field['name']);
                             var error_element = $('#'+field['name'] + 'err');
@@ -106,7 +94,7 @@ $(document).ready(function() {
                             else {
                                 error_element.removeClass("error_show").addClass("error");
                             }
-                        alert(error_free + " " + field['name']);
+                       // alert(error_free + " " + field['name']);
                     });
 
                     if (error_free) {
@@ -124,7 +112,8 @@ $(document).ready(function() {
                         }).then(function(isConfirm) {
                             if (isConfirm) {
                                 if (isConfirm === true) {
-                                    setTimeout(function(){swal("Commento Registrato");}, 2000);
+                                    $('#commForm').action = "../queries/sendform.php";
+                                    swal("Commento Registrato");
                                     $('#commForm').submit();
                                 } else if (isConfirm === false) {
                                     swal("Registrazione Annullata", "Commento non registrato", "error");
@@ -138,9 +127,8 @@ $(document).ready(function() {
                     }
                     else
                         swal("Errore", "Form non correttamente compilato", "error");
-                });
 			});
-            $("button.button-cancel").click(function(event){
+            $("#reset").click(function(event){
                 event.preventDefault();
                 $('.error_show').removeClass("error_show").addClass("error");
                 $('.error_chars').removeClass("error_chars");
@@ -148,7 +136,10 @@ $(document).ready(function() {
                 $('.invalid').removeClass("invalid");
                 $('.valid').removeClass("valid");
                 $('#anon').addClass("valid");
-                grecaptcha.reset();
+                $('#username').val('');
+                $('#email').val('');
+                $('#check').val('');
+                $('#comment').val('');
                 $('#commForm').reset();
             });
 });

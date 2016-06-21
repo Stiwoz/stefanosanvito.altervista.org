@@ -233,10 +233,6 @@ a.footer-a:hover, a.footer-a:active {
         Esame-Specific
 ========================================================*/
 
-.imgClasse{
-    width: 100%;
-    height: auto;
-}
 
 /*========================================================
         Commenti-Specific
@@ -343,7 +339,4 @@ textarea.hresize {
 a.table-logged-icon:hover {
     text-decoration: none;
     background-color: rgba(0,0,0,0);
-}
-.g-recaptcha {
-    display: inline-block;
 }
