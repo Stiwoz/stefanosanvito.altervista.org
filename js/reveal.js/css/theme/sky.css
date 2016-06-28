@@ -12,24 +12,24 @@
  * GLOBAL STYLES
  *********************************************/
 body {
-  background: rgba(173, 217, 228, .6);
-  background: -moz-radial-gradient(center, circle cover, rgba(247, 251, 252, .6) 0%, rgba(173, 217, 228, .6) 100%);
-  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(247, 251, 252, .6)), color-stop(100%, rgba(173, 217, 228, .6)));
-  background: -webkit-radial-gradient(center, circle cover, rgba(247, 251, 252, .6) 0%, rgba(173, 217, 228, .6) 100%);
-  background: -o-radial-gradient(center, circle cover, rgba(247, 251, 252, .6) 0%, rgba(173, 217, 228, .6) 100%);
-  background: -ms-radial-gradient(center, circle cover, rgba(247, 251, 252, .6) 0%, rgba(173, 217, 228, .6) 100%);
-  background: radial-gradient(center, circle cover, rgba(247, 251, 252, .6) 0%, rgba(173, 217, 228, .6) 100%);
-  background-color: rgba(247, 251, 252, .6);}
+  background: rgba(173, 217, 228, .4);
+  background: -moz-radial-gradient(center, circle cover, rgba(247, 251, 252, .4) 0%, rgba(173, 217, 228, .4) 100%);
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(247, 251, 252, .4)), color-stop(100%, rgba(173, 217, 228, .4)));
+  background: -webkit-radial-gradient(center, circle cover, rgba(247, 251, 252, .4) 0%, rgba(173, 217, 228, .4) 100%);
+  background: -o-radial-gradient(center, circle cover, rgba(247, 251, 252, .4) 0%, rgba(173, 217, 228, .4) 100%);
+  background: -ms-radial-gradient(center, circle cover, rgba(247, 251, 252, .4) 0%, rgba(173, 217, 228, .4) 100%);
+  background: radial-gradient(center, circle cover, rgba(247, 251, 252, .4) 0%, rgba(173, 217, 228, .4) 100%);
+  background-color: rgba(247, 251, 252, .4);}
 
 .reveal {
   font-family: "Open Sans", sans-serif;
   font-size: 36px;
   font-weight: normal;
-  color: #333; }
+  color: #024794; }
 
 ::selection {
   color: #fff;
-  background: #134674;
+  background: #0570e8;
   text-shadow: none; }
 
 .reveal .slides > section,
@@ -47,7 +47,7 @@ body {
 .reveal h5,
 .reveal h6 {
   margin: 0 0 20px 0;
-  color: #333;
+  color: #024794;
   font-family: "Quicksand", sans-serif;
   font-weight: normal;
   line-height: 1.2;
@@ -212,14 +212,15 @@ body {
  * LINKS
  *********************************************/
 .reveal a {
-  color: #3b759e;
+  color: #e18800;
   text-decoration: none;
   -webkit-transition: color .15s ease;
   -moz-transition: color .15s ease;
   transition: color .15s ease; }
 
 .reveal a:hover {
-  color: #74a7cb;
+  color: #ffa215;
+  text-decoration: underline;
   text-shadow: none;
   border: none; }
 

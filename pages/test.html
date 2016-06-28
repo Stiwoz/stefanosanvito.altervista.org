@@ -1,0 +1,714 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Reveal-chart - A plugin to integrate Chartjs with Revealjs</title>
+
+    <meta name="description" content="A plugin to integrate chartjs and reveal js">
+    <meta name="author" content="Sagar DV">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="../js/reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="../js/reveal.js/css/theme/sky.css" id="theme">
+
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="../js/reveal.js/lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+</head>
+
+<body>
+
+<div class="reveal">
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+        <section>
+            <h1>Reveal-Chart</h1>
+            <h4>A plug-in that integrates chart.js with reveal.js</h4>
+        </section>
+        <section>
+            <h2>Never heard of Reveal.js</h2>
+            <h4>check it out <a href="http://lab.hakim.se/reveal-js/#/">here</a></h4>
+        </section>
+        <section>
+            <h1>The plug-in</h1>
+            <iframe style="width:320px; height:180px;overflow:hidden;margin:10px 5px auto auto;" scrolling="no" id="chart-frame-0" data-chart></iframe>
+            <p>You can get it here:</p>
+            <p><a href="https://gitlab.com/dvenkatsagar/reveal-chart">https://gitlab.com/dvenkatsagar/reveal-chart</a><p>
+        </section>
+        <section>
+            <section>
+                <h2>Installation</h2>
+                <ul>
+                    <li>Download repository and copy the "plugin" folder to the root of your presentation</li>
+                    <li>In the Reveal.initialize function of your presentation, add these dependencies:</li>
+                </ul>
+						<pre><code class="javascript">Reveal.initialize({
+                            dependencies : [
+                            // Chart.min.js
+                            { src: 'plugin/chartjs/Chart.min.js'},
+                            // the plugin
+                            { src: 'plugin/chartjs/charted.js'}
+                            ]
+                            });						</code></pre>
+                <small>Note: Press down arrow for more info.</small>
+            </section>
+            <section>
+                <h1>Markup</h1>
+                <p>Step 1 : In the &lt;section&gt; tag, add an iframe in this format:</p>
+						<pre><code data-trim class="html">
+                            &lt;section&gt;
+                            &lt;iframe id="some-selector" data-chart&gt;&lt;/iframe&gt;
+                            &lt;/section&gt;</code></pre>
+            </section>
+            <section>
+                <p>Step 2 : In the Reveal.initialize function, add an option "chart" like this:</p>
+						<pre><code class="javascript">Reveal.initialize({
+                            chart : {
+                            path : "" // Optional path to Chart.js
+                            items : [
+                            {
+                            // selector must be iframe id,
+                            selector : "#some-selector",
+                            // type can be pie/doughtnut/line/bar/radar/polararea
+                            type : "",
+                            // The chart data can also be [], check chartjs docs
+                            data : {},
+                            // The chart options, check chartjs docs
+                            options : {},
+                            // optional
+                            canvas : {
+                            // width of iframe -> canvas element.
+                            // default : 250px
+                            width : "",
+                            // height of iframe -> canvas element.
+                            // default : 150px
+                            height : ""
+                            }
+                            }
+                            ]
+                            }
+                            });
+                        </code></pre>
+                <small>Note : "canvas" property in the "chart" option is optional.</small>
+            </section>
+            <section>
+                <h1>You're all set!!!</h1>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h3>Example : Line chart</h3>
+                <iframe style="overflow:hidden;margin:5px 5px auto auto;" class="stretch" scrolling="no" id="chart-frame-1" data-chart></iframe>
+                <small>Note : Press down arrow for more info.</small>
+            </section>
+            <section>
+                <h3>Markup</h3>
+                <ul style="font-size:0.8em;">
+                    <li>Step 1 : Installation and Markup step 1 are same. Check <a href="#/3">here</a>.</li>
+                    <li>Step 2 : The javascript</li>
+                </ul>
+						<pre><code class="javascript">Reveal.initialize({
+                            chart : {
+                            // Taken from chartjs documentation
+                            items : [
+                            {
+                            selector : "#chart-frame-1",
+                            type : "line",
+                            data : {
+                            labels: ["January", "February", "March", "April", "May", "June", "July"],
+                            datasets: [
+                            {
+                            label: "My First dataset",
+                            fillColor: "rgba(220,220,220,0.2)",
+                            strokeColor: "rgba(220,220,220,1)",
+                            pointColor: "rgba(220,220,220,1)",
+                            pointStrokeColor: "#fff",
+                            pointHighlightFill: "#fff",
+                            pointHighlightStroke: "rgba(220,220,220,1)",
+                            data: [65, 59, 80, 81, 56, 55, 40]
+                            },
+                            {
+                            label: "My Second dataset",
+                            fillColor: "rgba(151,187,205,0.2)",
+                            strokeColor: "rgba(151,187,205,1)",
+                            pointColor: "rgba(151,187,205,1)",
+                            pointStrokeColor: "#fff",
+                            pointHighlightFill: "#fff",
+                            pointHighlightStroke: "rgba(151,187,205,1)",
+                            data: [28, 48, 40, 19, 86, 27, 90]
+                            }
+                            ]
+                            },
+                            options : {
+                            responsive:true
+                            }
+                            }
+                            ]
+                            }
+                            });
+                        </code></pre>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h3>Example : Bar chart</h3>
+                <iframe style="overflow:hidden;margin:5px 5px auto auto;" class="stretch" scrolling="no" id="chart-frame-2" data-chart></iframe>
+                <small>Note : Press down arrow for more info.</small>
+            </section>
+            <section>
+                <h3>Markup</h3>
+                <ul style="font-size:0.8em;">
+                    <li>Step 2 : The javascript</li>
+                </ul>
+						<pre><code class="javascript">Reveal.initialize({
+                            chart : {
+                            // Taken from chartjs documentation
+                            items : [
+                            {
+                            selector : "#chart-frame-2",
+                            type : "bar",
+                            data : {
+                            labels: ["January", "February", "March", "April", "May", "June", "July"],
+                            datasets: [
+                            {
+                            label: "My First dataset",
+                            fillColor: "rgba(220,220,220,0.5)",
+                            strokeColor: "rgba(220,220,220,0.8)",
+                            highlightFill: "rgba(220,220,220,0.75)",
+                            highlightStroke: "rgba(220,220,220,1)",
+                            data: [65, 59, 80, 81, 56, 55, 40]
+                            },
+                            {
+                            label: "My Second dataset",
+                            fillColor: "rgba(151,187,205,0.5)",
+                            strokeColor: "rgba(151,187,205,0.8)",
+                            highlightFill: "rgba(151,187,205,0.75)",
+                            highlightStroke: "rgba(151,187,205,1)",
+                            data: [28, 48, 40, 19, 86, 27, 90]
+                            }
+                            ]
+                            },
+                            options : {
+                            responsive : true
+                            }
+                            }
+                            ]
+                            }
+                            });
+                        </code></pre>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h3>Example : Radar chart</h3>
+                <iframe style="overflow:hidden;margin:5px 5px auto auto;" class="stretch" scrolling="no" id="chart-frame-3" data-chart></iframe>
+                <small>Note : Press down arrow for more info.</small>
+            </section>
+            <section>
+                <h3>Markup</h3>
+                <ul style="font-size:0.8em;">
+                    <li>Step 2 : The javascript</li>
+                </ul>
+						<pre><code class="javascript">Reveal.initialize({
+                            chart : {
+                            // Taken from chartjs documentation
+                            items : [
+                            {
+                            selector : "#chart-frame-3",
+                            type : "bar",
+                            data : {
+                            labels: ["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"],
+                            datasets: [
+                            {
+                            label: "My First dataset",
+                            fillColor: "rgba(220,220,220,0.2)",
+                            strokeColor: "rgba(220,220,220,1)",
+                            pointColor: "rgba(220,220,220,1)",
+                            pointStrokeColor: "#fff",
+                            pointHighlightFill: "#fff",
+                            pointHighlightStroke: "rgba(220,220,220,1)",
+                            data: [65, 59, 90, 81, 56, 55, 40]
+                            },
+                            {
+                            label: "My Second dataset",
+                            fillColor: "rgba(151,187,205,0.2)",
+                            strokeColor: "rgba(151,187,205,1)",
+                            pointColor: "rgba(151,187,205,1)",
+                            pointStrokeColor: "#fff",
+                            pointHighlightFill: "#fff",
+                            pointHighlightStroke: "rgba(151,187,205,1)",
+                            data: [28, 48, 40, 19, 96, 27, 100]
+                            }
+                            ]
+                            },
+                            options :{
+                            responsive : true,
+                            pointLabelFontSize : 15
+                            }
+                            }
+                            ]
+                            }
+                            });
+                        </code></pre>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h3>Example : Polar Area chart</h3>
+                <iframe style="overflow:hidden;margin:5px 5px auto auto;" class="stretch" scrolling="no" id="chart-frame-4" data-chart></iframe>
+                <small>Note : Press down arrow for more info.</small>
+            </section>
+            <section>
+                <h3>Markup</h3>
+                <ul style="font-size:0.8em;">
+                    <li>Step 2 : The javascript</li>
+                </ul>
+						<pre><code class="javascript">Reveal.initialize({
+                            chart : {
+                            // Taken from chartjs documentation
+                            items : [
+                            {
+                            selector : "#chart-frame-4",
+                            type : "polararea",
+                            data : [
+                            {
+                            value: 300,
+                            color:"#F7464A",
+                            highlight: "#FF5A5E",
+                            label: "Red"
+                            },
+                            {
+                            value: 50,
+                            color: "#46BFBD",
+                            highlight: "#5AD3D1",
+                            label: "Green"
+                            },
+                            {
+                            value: 100,
+                            color: "#FDB45C",
+                            highlight: "#FFC870",
+                            label: "Yellow"
+                            },
+                            {
+                            value: 40,
+                            color: "#949FB1",
+                            highlight: "#A8B3C5",
+                            label: "Grey"
+                            },
+                            {
+                            value: 120,
+                            color: "#4D5360",
+                            highlight: "#616774",
+                            label: "Dark Grey"
+                            }
+                            ],
+                            options : {
+                            responsive : true
+                            }
+                            }
+                            ]
+                            }
+                            });
+                        </code></pre>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h4>Example : Pie chart</h4>
+                <iframe style="overflow:hidden;margin : auto 10px auto auto;" class="stretch" scrolling="no" id="chart-frame-5" data-chart></iframe>
+                <small>Note : Press down arrow for more info.</small>
+            </section>
+            <section>
+                <h3>Markup</h3>
+                <ul style="font-size:0.8em;">
+                    <li>Step 2 : The javascript</li>
+                </ul>
+						<pre><code class="javascript">Reveal.initialize({
+                            chart : {
+                            // Taken from chartjs documentation
+                            items : [
+                            {
+                            selector : "#chart-frame-5",
+                            type : "pie",
+                            data : [
+                            {
+                            value: 300,
+                            color:"#F7464A",
+                            highlight: "#FF5A5E",
+                            label: "Red"
+                            },
+                            {
+                            value: 50,
+                            color: "#46BFBD",
+                            highlight: "#5AD3D1",
+                            label: "Green"
+                            },
+                            {
+                            value: 100,
+                            color: "#FDB45C",
+                            highlight: "#FFC870",
+                            label: "Yellow"
+                            }
+                            ],
+                            options : {
+                            responsive : true
+                            }
+                            }
+                            ]
+                            }
+                            });
+                        </code></pre>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h4>Example : Doughnut chart</h4>
+                <iframe style="overflow:hidden;margin : auto 10px auto auto;" class="stretch" scrolling="no" id="chart-frame-6" data-chart></iframe>
+                <small>Note : Press down arrow for more info.</small>
+            </section>
+            <section>
+                <h3>Markup</h3>
+                <ul style="font-size:0.8em;">
+                    <li>Step 2 : The javascript</li>
+                </ul>
+						<pre><code class="javascript">Reveal.initialize({
+                            chart : {
+                            // Taken from chartjs documentation
+                            items : [
+                            {
+                            selector : "#chart-frame-6",
+                            type : "doughnut",
+                            data : [
+                            {
+                            value: 300,
+                            color:"#F7464A",
+                            highlight: "#FF5A5E",
+                            label: "Red"
+                            },
+                            {
+                            value: 50,
+                            color: "#46BFBD",
+                            highlight: "#5AD3D1",
+                            label: "Green"
+                            },
+                            {
+                            value: 100,
+                            color: "#FDB45C",
+                            highlight: "#FFC870",
+                            label: "Yellow"
+                            }
+                            ],
+                            options : {
+                            percentageInnerCutout : 50,
+                            responsive : true
+                            }
+                            }
+                            ]
+                            }
+                            });
+                        </code></pre>
+            </section>
+        </section>
+        <section>
+            <h3>Accessing the charts</h3>
+            <p style="text-align:justify;">The "RevealChart" variable collects the information about all the charts when changing slides.</p>
+            <p style="text-align:justify;">Add some functionality after the Reveal.initialize function like this for example:
+					<pre><code class="javascript">Reveal.addEventListener("slidechanged",function(){
+                        setTimeout(function(){ // Timeout required to load the plugin
+                        // the RevealChart has iframe ids as properties
+                        // (replacing "-" with "_")
+                        console.log(RevealChart);
+                        },500);
+                        },false);
+                    </code></pre>
+        </section>
+        <section>
+            <h2>Tips and Tricks</h2>
+            <p>For good results:</p>
+            <ul><li>Add this line to the setTimeout function as given <a href="#/10">here</a>.</li></ul>
+            <pre><code class="javascript">Chart.defaults.global.responsive = true;</code></pre>
+            <ul><li>Add a class "stretch" to the iframe or set your own height and width</li></ul>
+            <pre><code class="html">&lt;iframe class="stretch" id="chart-frame" data-chart&gt;&lt;/iframe&gt;</code></pre>
+        </section>
+        <section>
+            <h4> If you still have problems setting it up, check the source of this presentation <a href="view-source:https://dvenkatsagar.github.io/prez/reveal-chart.html">here</a></h4>
+        </section>
+        <section>
+            <h1>Resources</h1>
+            <ul>
+                <li>Reveal.js - <a href="http://lab.hakim.se/reveal-js/#/">http://lab.hakim.se/reveal-js/#/</a></li>
+                <li>Chart.js - <a href="http://www.chartjs.org/">http://www.chartjs.org/</a></li>
+                <li>The plugin - <a href="https://gitlab.com/dvenkatsagar/reveal-chart">https://gitlab.com/dvenkatsagar/reveal-chart</a></li>
+            </ul>
+        </section>
+        <section>
+            <h1>Thank you</h1>
+        </section>
+    </div>
+</div>
+
+<script src="../js/reveal.js/lib/js/head.min.js"></script>
+<script src="../js/reveal.js/js/reveal.js"></script>
+
+<script>
+    var items = [
+        {
+            selector : "#chart-frame-0",
+            type : "doughnut",
+            data : [
+                {
+                    value: 300,
+                    color:"#F7464A",
+                    highlight: "#FF5A5E",
+                    label: "Red"
+                },
+                {
+                    value: 50,
+                    color: "#46BFBD",
+                    highlight: "#5AD3D1",
+                    label: "Green"
+                },
+                {
+                    value: 100,
+                    color: "#FDB45C",
+                    highlight: "#FFC870",
+                    label: "Yellow"
+                }
+            ],
+            options : {
+                responsive:true
+            }
+        },
+        {
+            selector : "#chart-frame-1",
+            type : "line",
+            data : {
+                labels: ["January", "February", "March", "April", "May", "June", "July"],
+                datasets: [
+                    {
+                        label: "My First dataset",
+                        fillColor: "rgba(220,220,220,0.2)",
+                        strokeColor: "rgba(220,220,220,1)",
+                        pointColor: "rgba(220,220,220,1)",
+                        pointStrokeColor: "#fff",
+                        pointHighlightFill: "#fff",
+                        pointHighlightStroke: "rgba(220,220,220,1)",
+                        data: [65, 59, 80, 81, 56, 55, 40]
+                    },
+                    {
+                        label: "My Second dataset",
+                        fillColor: "rgba(151,187,205,0.2)",
+                        strokeColor: "rgba(151,187,205,1)",
+                        pointColor: "rgba(151,187,205,1)",
+                        pointStrokeColor: "#fff",
+                        pointHighlightFill: "#fff",
+                        pointHighlightStroke: "rgba(151,187,205,1)",
+                        data: [28, 48, 40, 19, 86, 27, 90]
+                    }
+                ]
+            },
+            options : {
+                responsive:true
+            }
+        },
+        {
+            selector : "#chart-frame-2",
+            type : "bar",
+            data : {
+                labels: ["January", "February", "March", "April", "May", "June", "July"],
+                datasets: [
+                    {
+                        label: "My First dataset",
+                        fillColor: "rgba(220,220,220,0.5)",
+                        strokeColor: "rgba(220,220,220,0.8)",
+                        highlightFill: "rgba(220,220,220,0.75)",
+                        highlightStroke: "rgba(220,220,220,1)",
+                        data: [65, 59, 80, 81, 56, 55, 40]
+                    },
+                    {
+                        label: "My Second dataset",
+                        fillColor: "rgba(151,187,205,0.5)",
+                        strokeColor: "rgba(151,187,205,0.8)",
+                        highlightFill: "rgba(151,187,205,0.75)",
+                        highlightStroke: "rgba(151,187,205,1)",
+                        data: [28, 48, 40, 19, 86, 27, 90]
+                    }
+                ]
+            },
+            options : {
+                responsive : true
+            }
+        },
+        {
+            selector : "#chart-frame-3",
+            type : "radar",
+            data : {
+                labels: ["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"],
+                datasets: [
+                    {
+                        label: "My First dataset",
+                        fillColor: "rgba(220,220,220,0.2)",
+                        strokeColor: "rgba(220,220,220,1)",
+                        pointColor: "rgba(220,220,220,1)",
+                        pointStrokeColor: "#fff",
+                        pointHighlightFill: "#fff",
+                        pointHighlightStroke: "rgba(220,220,220,1)",
+                        data: [65, 59, 90, 81, 56, 55, 40]
+                    },
+                    {
+                        label: "My Second dataset",
+                        fillColor: "rgba(151,187,205,0.2)",
+                        strokeColor: "rgba(151,187,205,1)",
+                        pointColor: "rgba(151,187,205,1)",
+                        pointStrokeColor: "#fff",
+                        pointHighlightFill: "#fff",
+                        pointHighlightStroke: "rgba(151,187,205,1)",
+                        data: [28, 48, 40, 19, 96, 27, 100]
+                    }
+                ]
+            },
+            options :{
+                responsive : true,
+                pointLabelFontSize : 15
+            }
+        },
+        {
+            selector : "#chart-frame-4",
+            type : "polararea",
+            data : [
+                {
+                    value: 300,
+                    color:"#F7464A",
+                    highlight: "#FF5A5E",
+                    label: "Red"
+                },
+                {
+                    value: 50,
+                    color: "#46BFBD",
+                    highlight: "#5AD3D1",
+                    label: "Green"
+                },
+                {
+                    value: 100,
+                    color: "#FDB45C",
+                    highlight: "#FFC870",
+                    label: "Yellow"
+                },
+                {
+                    value: 40,
+                    color: "#949FB1",
+                    highlight: "#A8B3C5",
+                    label: "Grey"
+                },
+                {
+                    value: 120,
+                    color: "#4D5360",
+                    highlight: "#616774",
+                    label: "Dark Grey"
+                }
+            ],
+            options : {
+                responsive : true
+            }
+        },
+        {
+            selector : "#chart-frame-5",
+            type : "pie",
+            data : [
+                {
+                    value: 300,
+                    color:"#F7464A",
+                    highlight: "#FF5A5E",
+                    label: "Red"
+                },
+                {
+                    value: 50,
+                    color: "#46BFBD",
+                    highlight: "#5AD3D1",
+                    label: "Green"
+                },
+                {
+                    value: 100,
+                    color: "#FDB45C",
+                    highlight: "#FFC870",
+                    label: "Yellow"
+                }
+            ],
+            options : {
+                responsive : true
+            }
+        },
+        {
+            selector : "#chart-frame-6",
+            type : "doughnut",
+            data : [
+                {
+                    value: 300,
+                    color:"#F7464A",
+                    highlight: "#FF5A5E",
+                    label: "Red"
+                },
+                {
+                    value: 50,
+                    color: "#46BFBD",
+                    highlight: "#5AD3D1",
+                    label: "Green"
+                },
+                {
+                    value: 100,
+                    color: "#FDB45C",
+                    highlight: "#FFC870",
+                    label: "Yellow"
+                }
+            ],
+            options : {
+                responsive : true
+            }
+        }
+    ];
+    // Full list of configuration options available at:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        slideNumber : true,
+        //previewLinks: true,
+
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+        chart : {
+            items : items
+        },
+        // Optional reveal.js plugins
+        dependencies: [
+            { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+            { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+            { src: 'plugin/zoom-js/zoom.js', async: true },
+            { src: 'plugin/notes/notes.js', async: true },
+            { src: 'plugin/chartjs/Chart.min.js'},
+            { src: 'plugin/chartjs/charted.js'}
+        ]
+    });
+
+</script>
+</body>
+</html>
