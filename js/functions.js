@@ -53,7 +53,7 @@ $(document).ready(function() {
                     }
 				});
 
-                //checking if bot
+                //checking "city"
                 $('#city').on('input',function(){
                     var input=$(this);
                     var is_name=input.val();
@@ -83,50 +83,53 @@ $(document).ready(function() {
                 event.preventDefault();
 				var form_data=$("#commForm").serializeArray();
 				var error_free=true;
+                var city = $('#city');
+                if(city.val() == '')
+                    city.removeClass("invalid").addClass("valid");
+                else
+                    city.removeClass("valid").addClass("invalid");
+                jQuery.each(form_data, function(i, field){
+                    var input_name= $("#"+field['name']);
+                    var error_element = $('#'+field['name'] + 'err');
+                    if (!input_name.hasClass("valid")) {
+                        error_element.removeClass("error").addClass("error_show");
+                        error_free = false;
+                    }
+                    else {
+                        error_element.removeClass("error_show").addClass("error");
+                    }
+                    //alert(error_free + " " + field['name']);
+                });
 
-                    jQuery.each(form_data, function(i, field){
-                        var input_name= $("#"+field['name']);
-                            var error_element = $('#'+field['name'] + 'err');
-                            if (!input_name.hasClass("valid")) {
-                                error_element.removeClass("error").addClass("error_show");
-                                error_free = false;
+                if (error_free) {
+                   // $('#commForm').attr('action', '../queries/sendform.php');
+                    swal({
+                        title: "Confermare l'inserimento?",
+                        text: "Premere Conferma per continuare",
+                        type: "info",
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        confirmButtonText: "Conferma",
+                        cancelButtonText: "Annulla",
+                        closeOnConfirm: false,
+                        closeOnCancel: false,
+                    }).then(function(isConfirm) {
+                        if (isConfirm) {
+                            if (isConfirm === true) {
+                                swal("Commento Registrato","","success");
+                                $('#commForm').submit();
+                            } else if (isConfirm === false) {
+                                swal("Registrazione Annullata", "Commento non registrato", "error");
                             }
                             else {
-                                error_element.removeClass("error_show").addClass("error");
+                                // Esc, close button or outside click
+                                // isConfirm is undefined
                             }
-                       // alert(error_free + " " + field['name']);
+                        }
                     });
-
-                    if (error_free) {
-                        swal({
-                            title: "Confermare l'inserimento?",
-                            text: "Premere Conferma per continuare",
-                            type: "info",
-                            showCancelButton: true,
-                            confirmButtonColor: '#3085d6',
-                            confirmButtonText: "Conferma",
-                            cancelButtonText: "Annulla",
-                            closeOnConfirm: false,
-                            closeOnCancel: false,
-                            showLoaderOnConfirm: true
-                        }).then(function(isConfirm) {
-                            if (isConfirm) {
-                                if (isConfirm === true) {
-                                    $('#commForm').action = "../queries/sendform.php";
-                                    swal("Commento Registrato");
-                                    $('#commForm').submit();
-                                } else if (isConfirm === false) {
-                                    swal("Registrazione Annullata", "Commento non registrato", "error");
-                                }
-                                else {
-                                    // Esc, close button or outside click
-                                    // isConfirm is undefined
-                                }
-                            }
-                        });
-                    }
-                    else
-                        swal("Errore", "Form non correttamente compilato", "error");
+                }
+                else
+                    swal("Errore", "Form non correttamente compilato", "error");
 			});
             $("#reset").click(function(event){
                 event.preventDefault();
@@ -138,9 +141,8 @@ $(document).ready(function() {
                 $('#anon').addClass("valid");
                 $('#username').val('');
                 $('#email').val('');
-                $('#check').val('');
+                $('#city').val('');
                 $('#comment').val('');
-                $('#commForm').reset();
             });
 });
 /*

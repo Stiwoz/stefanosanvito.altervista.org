@@ -15,5 +15,5 @@ $db_table ="comments";
 $mysqli = new mysqli($server_name,$username,$password,$db_name);
 
 if (mysqli_connect_errno()) {
-    die("Can't connect to database: " . mysqli_connect_error());
+    die("Cannot connect to database: " . mysqli_connect_error());
 }

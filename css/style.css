@@ -233,6 +233,12 @@ a.footer-a:hover, a.footer-a:active {
         Esame-Specific
 ========================================================*/
 
+#slideShow{
+    width: 100%;
+    height: calc(100vh - 134px);
+    border-style: none;
+    display: block;
+}
 
 /*========================================================
         Commenti-Specific

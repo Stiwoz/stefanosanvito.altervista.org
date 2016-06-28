@@ -9,7 +9,7 @@
 
     <link rel="stylesheet" href="../css/custom-theme-bootstrap.css"/>
     <link rel="stylesheet" href="../css/font-awesome-4.4.0/css/font-awesome.css"/>
-    <link rel="stylesheet" type="text/css" href="../js/sweetalert2.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../js/Sweetalert2/sweetalert2.min.css"/>
     <link rel="stylesheet" href="../css/style.css"/>
 
     <title>Sanvito Stefano's Website</title>
@@ -42,7 +42,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-5">
-                <form class="comment-form" id="commForm" name="commForm" method="post" action="#">
+                <form class="comment-form" id="commForm" name="commForm" method="get" action="../queries/sendform.php">
                     <h1>Lascia un Commento</h1>
                     <div class="form-group">
                         <div class="row">
@@ -173,7 +173,7 @@
                     </ul>
                 </div>
                 <div class="col-md-1 col-xs-4">
-                    <a class="footer-a" id="flag" href="eng/pages/tesina.html"><img src="../img/engIconSmall.png"/></a>
+                    <a class="footer-a" id="flag" href="eng/pages/commenti.php"><img src="../img/engIconSmall.png"/></a>
                 </div>
             </div>
         </div>
@@ -182,7 +182,7 @@
 <!--- --- --- Scripts & Plug-Ins --- --- --->
 <script src="../js/jquery-1.11.3.min.js"></script>
 <script src="../bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
-<script src="../js/sweetalert2.min.js"></script>
+<script src="../js/Sweetalert2/sweetalert2.min.js"></script>
 <script src="../js/functions.js"></script>
 </body>
 </html>
