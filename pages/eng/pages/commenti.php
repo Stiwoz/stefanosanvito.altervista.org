@@ -78,7 +78,7 @@
                     </div>
                     <div class="divider-2px"></div>
                     <div class="text-center">
-                        <strong>I authorize the use of my personal data pursuant to <a href="http://www.camera.it/parlam/leggi/deleghe/03196dl.htm">Legislative Decree. 196 of June 30, 2003</a></strong>
+                        <strong>I authorize the use of my personal data pursuant to <a href="http://www.camera.it/parlam/leggi/deleghe/03196dl.htm" target="_blank">Legislative Decree. 196 of June 30, 2003</a></strong>
                         <div class="center-block">
                             <div class="radio-inline">
                                 <label>
@@ -161,7 +161,7 @@
             <div class="row">
                 <div class="col-md-2 hidden-xs hidden-sm">
                     <div class="row info">
-                        <div class="col-md-12 text-center">Stefano Sanvito</div>
+                        <div class="col-md-12 text-center">Stefano Sanvito</div>
                         <div class="col-md-12 text-center">s.stefano.sanvito@gmail.com</div>
                     </div>
                 </div>
