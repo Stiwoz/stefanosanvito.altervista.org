@@ -6,8 +6,6 @@
     $anon = trim($_REQUEST["anon"]);
     $comment = trim($_REQUEST["comment"]);
 
-echo $user."".$email."".$anon."".$comment;
-
     if($anon == "yes")
         $anon = 1;
     else

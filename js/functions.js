@@ -102,7 +102,6 @@ $(document).ready(function() {
                 });
 
                 if (error_free) {
-                   // $('#commForm').attr('action', '../queries/sendform.php');
                     swal({
                         title: "Confermare l'inserimento?",
                         text: "Premere Conferma per continuare",
@@ -128,8 +127,10 @@ $(document).ready(function() {
                         }
                     });
                 }
-                else
+                else {
                     swal("Errore", "Form non correttamente compilato", "error");
+                    $('#commForm').attr('action', '');
+                }
 			});
             $("#reset").click(function(event){
                 event.preventDefault();
@@ -145,55 +146,3 @@ $(document).ready(function() {
                 $('#comment').val('');
             });
 });
-/*
-function deleteRow(n) {
-    $.ajax({
-        type: 'GET',
-        url: 'deleteRow.php?n='+n,
-        success: function()
-                  {
-                    swal({title: "Utente Eliminato",
-                            text: "Premere OK per continuare",
-                            type: "success",
-                            confirmButtonColor: "rgb(5,112,232)",
-                            confirmButtonText: "OK",
-                            closeOnConfirm: false,
-                        }, function(){$(location).attr('href','../pages/login.php');});
-                  }
-       });
-}
-function editRow(n) {
-    swal({title: "Modifica Dati",
-          html: "<div class='container'><table class='table-form-popup'><tr><td><label for='name'>Nome:</label></td><td><input type='text' id='name' name='name' placeholder='Nome'/></td><td></td></tr><tr><td></td><td><span id='errname' class='error'>Campo Obbligatorio<br/></span></td></tr><tr><td><label for='surname'>Cognome:</label></td><td><input type='text' id='surname' name='surname' placeholder='Cognome'/></td><td></td></tr><tr><td></td><td><span id='errsurname' class='error'>Campo Obbligatorio<br/></span></td></tr><tr><td><label for='email'>E-Mail:</label></td><td><input type='text' id='email' name='email' placeholder='indirizzo@email.com'/></td><td></td></tr><tr><td></td><td><span id='erremail' class='error'>Inserire un indirizzo valido<br/></span></td></tr><tr><td><label for='date'>Data di Nascita:</label></td><td><input type='date' id='date' name='date' max='2018-01-01' min='1899-12-31'/></td><td></td></tr><tr><td></td><td><span id='errdate' class='error'>Inserire una data valida<br/></span></td></tr></table></div>",
-          type: "warning",
-          showCancelButton: true,
-          confirmButtonColor: "rgb(5,112,232)",
-          cancelButtonColor: "rgb(188,211,236)",
-          confirmButtonText: "Conferma",
-          cancelButtonText: "Annula",
-          closeOnConfirm: false,
-          closeOnCancel: false,
-          showLoaderOnConfirm: true
-                        },
-                      function(isConfirm){
-                                if (isConfirm) {
-                                    var name = $("#editname").val();
-                                    var surname = $("#editsurname").val();
-                                    var email = $("#editemail").val();
-                                    var date = $("#editdate").val();
-                                    setTimeout(function(){swal("Utente Registrato");}, 2000);
-                                    $.ajax({
-                                            type: 'GET',
-                                            url: 'editRow.php?ID='+n+'&name='+name+'&surname='+surname+'&email='+email+'&date='+date,
-                                            success: function() {
-                                                $(location).attr('href','../pages/login.php');
-                                            }
-                                    });
-
-                                } else {
-                                    swal("Modifica Annullata", "Utente non modificato", "error");
-                                }
-                        });
-
-}
-*/
